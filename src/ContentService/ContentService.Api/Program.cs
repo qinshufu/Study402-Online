@@ -15,6 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMediatR(options => options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
 // 添加数据库
 builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<ContentDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("default"),
