@@ -11,7 +11,7 @@ namespace Study402Online.Common.Linq
             var items = values.Skip((pageNo - 1) * pageSize).Take(pageSize).ToArray();
             var count = values.Count();
 
-            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = 0 };
+            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = pageSize };
         }
 
         public static PaginationResult<T> Pagination<T>(this IOrderedQueryable<T> values, int pageNo, int pageSize)
@@ -20,7 +20,7 @@ namespace Study402Online.Common.Linq
             var items = values.Skip((pageNo - 1) * pageSize).Take(pageSize).ToArray();
             var count = values.Count();
 
-            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = 0 };
+            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = pageSize };
         }
 
         public static async Task<PaginationResult<T>> PaginationAsync<T>(this IOrderedEnumerable<T> values, int pageNo, int pageSize)
@@ -31,7 +31,7 @@ namespace Study402Online.Common.Linq
             var items = values.Skip((pageNo - 1) * pageSize).Take(pageSize).ToArray();
             var count = values.Count();
 
-            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = 0 };
+            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = pageSize };
         }
 
         public static async Task<PaginationResult<T>> PaginationAsync<T>(this IOrderedQueryable<T> values, int pageNo, int pageSize)
@@ -40,7 +40,7 @@ namespace Study402Online.Common.Linq
             var items = await values.Skip((pageNo - 1) * pageSize).Take(pageSize).ToArrayAsync();
             var count = values.Count();
 
-            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = 0 };
+            return new PaginationResult<T> { Items = items, Counts = count, Page = pageNo, PageSize = pageSize };
         }
     }
 }
