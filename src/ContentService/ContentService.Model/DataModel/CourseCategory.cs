@@ -8,7 +8,7 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 主键
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// 名称

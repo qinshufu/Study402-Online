@@ -35,6 +35,11 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 创建人
         /// </summary>
-        public string Creater { get; set; }
+        public string? Creater { get; set; }
+
+        /// <summary>
+        /// 更新人
+        /// </summary>
+        public string? Updater { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 教师照片
         /// </summary>
-        public string TeacherPhotograph { get; set; }
+        public string? TeacherPhotograph { get; set; }
 
         /// <summary>
         /// 创建时间

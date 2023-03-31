@@ -12,8 +12,8 @@ using Study402Online.ContentService.Api.Infrastructure;
 namespace Study402Online.ContentService.Api.Migrations
 {
     [DbContext(typeof(ContentDbContext))]
-    [Migration("20230330134740_Initial")]
-    partial class Initial
+    [Migration("20230331092222_allow-course-updater-null")]
+    partial class allowcourseupdaternull
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,9 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Grade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -77,8 +80,11 @@ namespace Study402Online.ContentService.Api.Migrations
                     b.Property<string>("Tags")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Updater")
+                    b.Property<string>("TeachMode")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Updater")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Users")
@@ -91,11 +97,8 @@ namespace Study402Online.ContentService.Api.Migrations
 
             modelBuilder.Entity("Study402Online.ContentService.Model.DataModel.CourseCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsShow")
                         .HasColumnType("bit");
@@ -138,21 +141,18 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("QQ")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ValidDays")
+                    b.Property<int?>("ValidDays")
                         .HasColumnType("int");
 
                     b.Property<string>("Wechat")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -184,14 +184,12 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CompanyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CourseGrade")
                         .HasColumnType("int");
 
                     b.Property<string>("Creater")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -206,10 +204,10 @@ namespace Study402Online.ContentService.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("OfflineTime")
+                    b.Property<DateTime?>("OfflineTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("OnlineTime")
+                    b.Property<DateTime?>("OnlineTime")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("OriginalPrice")
@@ -229,7 +227,6 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Remark")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubClass")
@@ -252,7 +249,6 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Teachers")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Users")
@@ -390,7 +386,6 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TeacherPhotograph")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TeacherPosition")
@@ -413,20 +408,19 @@ namespace Study402Online.ContentService.Api.Migrations
                     b.Property<int>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CoursePublish")
+                    b.Property<int?>("CoursePublish")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreateTime")
+                    b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("time");
+                    b.Property<float?>("Duration")
+                        .HasColumnType("real");
 
-                    b.Property<DateTime>("EndTime")
+                    b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("Exists")
@@ -445,16 +439,16 @@ namespace Study402Online.ContentService.Api.Migrations
                     b.Property<int>("Parent")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Preview")
+                    b.Property<bool?>("Preview")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("StartTime")
+                    b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Type")
+                    b.Property<int?>("Type")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateTime")
+                    b.Property<DateTime?>("UpdateTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -477,7 +471,6 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Creater")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MediaId")
@@ -490,6 +483,9 @@ namespace Study402Online.ContentService.Api.Migrations
 
                     b.Property<int>("TeachPlan")
                         .HasColumnType("int");
+
+                    b.Property<string>("Updater")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

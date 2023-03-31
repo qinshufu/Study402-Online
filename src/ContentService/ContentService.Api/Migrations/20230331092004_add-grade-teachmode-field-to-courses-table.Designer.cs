@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Study402Online.ContentService.Api.Infrastructure;
 
@@ -11,9 +12,11 @@ using Study402Online.ContentService.Api.Infrastructure;
 namespace Study402Online.ContentService.Api.Migrations
 {
     [DbContext(typeof(ContentDbContext))]
-    partial class ContentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230331092004_add-grade-teachmode-field-to-courses-table")]
+    partial class addgradeteachmodefieldtocoursestable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,22 +43,25 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CompanyName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("CreateTime")
+                    b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Creater")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Grade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifyTime")
+                    b.Property<DateTime>("ModifyTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -80,6 +86,7 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Updater")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Users")

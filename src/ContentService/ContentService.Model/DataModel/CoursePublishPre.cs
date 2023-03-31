@@ -55,12 +55,12 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 课程等级
         /// </summary>
-        public CourseGrade Grade { get; set; }
+        public int Grade { get; set; }
 
         /// <summary>
         /// 教育模式
         /// </summary>
-        public TeachMode TeachMode { get; set; }
+        public int TeachMode { get; set; }
 
         /// <summary>
         /// 图片
@@ -100,7 +100,7 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 状态
         /// </summary>
-        public PublishStatus Status { get; set; }
+        public int Status { get; set; }
 
         /// <summary>
         /// 备注

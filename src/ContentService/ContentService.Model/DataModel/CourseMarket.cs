@@ -29,23 +29,23 @@ namespace Study402Online.ContentService.Model.DataModel
         public Decimal OriginalPrice { get; set; }
 
         /// <summary>
-        /// 微信
+        /// QQ
         /// </summary>
-        public required string QQ { get; set; }
+        public string? QQ { get; set; }
 
         /// <summary>
         /// 微信
         /// </summary>
-        public required string Wechat { get; set; }
+        public string? Wechat { get; set; }
 
         /// <summary>
         /// 电话
         /// </summary>
-        public required string Phone { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// 有效期天数
         /// </summary>
-        public int ValidDays { get; set; }
+        public int? ValidDays { get; set; }
     }
 }

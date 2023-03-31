@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Study402Online.ContentService.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class intialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,8 +15,7 @@ namespace Study402Online.ContentService.Api.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Label = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Parent = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -38,10 +37,10 @@ namespace Study402Online.ContentService.Api.Migrations
                     Chargeting = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    QQ = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Wechat = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ValidDays = table.Column<int>(type: "int", nullable: false)
+                    QQ = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Wechat = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ValidDays = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,11 +54,11 @@ namespace Study402Online.ContentService.Api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyId = table.Column<int>(type: "int", nullable: false),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Users = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tags = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Creater = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Creater = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Class = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClassName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SubClass = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -70,12 +69,12 @@ namespace Study402Online.ContentService.Api.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Market = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TeachPlan = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Teachers = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Teachers = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PublishTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OnlineTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OfflineTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OnlineTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OfflineTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PublishStatus = table.Column<int>(type: "int", nullable: false),
-                    Remark = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Charge = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -159,7 +158,7 @@ namespace Study402Online.ContentService.Api.Migrations
                     TeacherName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TeacherPosition = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TeacherIntroduction = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TeacherPhotograph = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeacherPhotograph = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -178,7 +177,8 @@ namespace Study402Online.ContentService.Api.Migrations
                     Course = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Creater = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Creater = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Updater = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -194,18 +194,18 @@ namespace Study402Online.ContentService.Api.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Parent = table.Column<int>(type: "int", nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Duration = table.Column<TimeSpan>(type: "time", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: true),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Duration = table.Column<int>(type: "int", nullable: true),
                     OrderBy = table.Column<int>(type: "int", nullable: false),
                     CourseId = table.Column<int>(type: "int", nullable: false),
-                    CoursePublish = table.Column<int>(type: "int", nullable: false),
+                    CoursePublish = table.Column<int>(type: "int", nullable: true),
                     Exists = table.Column<bool>(type: "bit", nullable: false),
-                    Preview = table.Column<bool>(type: "bit", nullable: false),
+                    Preview = table.Column<bool>(type: "bit", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

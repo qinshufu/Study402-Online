@@ -15,7 +15,7 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 公司名称
         /// </summary>
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
 
         /// <summary>
         /// 课程名称
@@ -35,7 +35,7 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 创建人
         /// </summary>
-        public string Creater { get; set; }
+        public string? Creater { get; set; }
 
         /// <summary>
         /// 父分类
@@ -60,12 +60,12 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 课程等级
         /// </summary>
-        public CourseGrade CourseGrade { get; set; }
+        public int CourseGrade { get; set; }
 
         /// <summary>
         /// 教育模式
         /// </summary>
-        public TeachMode TeachMode { get; set; }
+        public int TeachMode { get; set; }
 
         /// <summary>
         /// 课程图片
@@ -90,7 +90,7 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 教师信息，JSON 格式
         /// </summary>
-        public string Teachers { get; set; }
+        public string? Teachers { get; set; }
 
         /// <summary>
         /// 发布时间
@@ -100,22 +100,22 @@ namespace Study402Online.ContentService.Model.DataModel
         /// <summary>
         /// 上架时间
         /// </summary>
-        public DateTime OnlineTime { get; set; }
+        public DateTime? OnlineTime { get; set; }
 
         /// <summary>
         /// 下架时间
         /// </summary>
-        public DateTime OfflineTime { get; set; }
+        public DateTime? OfflineTime { get; set; }
 
         /// <summary>
         /// 发布状态
         /// </summary>
-        public PublishStatus PublishStatus { get; set; }
+        public int PublishStatus { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
-        public string Remark { get; set; }
+        public string? Remark { get; set; }
 
         /// <summary>
         /// 收费规则，对应数据字典 - 203
