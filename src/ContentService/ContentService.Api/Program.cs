@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Autofac.Extensions.DependencyInjection;
 using Study402Online.ContentService.Api.Infrastructure;
+using Study402Online.Common.Configurations;
 using System.Reflection;
 using Autofac;
 
@@ -8,7 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 适用 AutoFac
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
-    .ConfigureContainer<ContainerBuilder>(builder => builder.RegisterAssemblyTypes().AsImplementedInterfaces());
+    .ConfigureContainer<ContainerBuilder>(builder =>
+    {
+        builder.RegisterAssemblyTypes().AsImplementedInterfaces();
+        builder.RegisterAssemblyModules(typeof(Program).Assembly);
+    });
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,6 +32,8 @@ builder.Services.AddEntityFrameworkSqlServer()
         builder.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
     }));
 
+// 配置 swagger
+builder.Services.AddSwaggerGenDefault();
 
 var app = builder.Build();
 

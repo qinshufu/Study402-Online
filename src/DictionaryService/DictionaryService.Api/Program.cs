@@ -1,8 +1,6 @@
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Study402Online.DictionaryService.Api.Instructure;
-using Study402Online.DictionaryService.Model.DataModel;
-using System.Data.Common;
+using Study402Online.Common.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +20,8 @@ builder.Services.AddEntityFrameworkSqlServer()
     });
 
 builder.Services.AddMediatR(conf => conf.RegisterServicesFromAssemblies(typeof(Program).Assembly));
+
+builder.Services.AddSwaggerGenDefault();
 
 var app = builder.Build();
 

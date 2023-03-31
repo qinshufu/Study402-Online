@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
     <ProjectReference Include="..\DictionaryService.Model\DictionaryService.Model.csproj" />
   </ItemGroup>
 
