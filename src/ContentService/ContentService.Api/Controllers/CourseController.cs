@@ -9,6 +9,9 @@ using System.Linq.Expressions;
 
 namespace Study402Online.ContentService.Api.Controllers
 {
+    /// <summary>
+    /// 课程相关
+    /// </summary>
     [Route("api/course")]
     [ApiController]
     public class CourseController : ControllerBase
