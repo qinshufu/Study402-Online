@@ -66,6 +66,22 @@ public static class PocoHelper
         CopyProperties(source, dest);
 
         return dest;
+    }
 
+    /// <summary>
+    /// 创建目标类型对象，并复制源对象属性到目标对象
+    /// </summary>
+    /// <typeparam name="TSource"></typeparam>
+    /// <typeparam name="TDestination"></typeparam>
+    /// <param name="source"></param>
+    /// <returns></returns>
+    public static TDestination Make<TDestination>(params object[] sourceObjCollection)
+        where TDestination : class, new()
+    {
+        var dest = new TDestination();
+        foreach (var source in sourceObjCollection)
+            CopyProperties(source, dest);
+
+        return dest;
     }
 }
