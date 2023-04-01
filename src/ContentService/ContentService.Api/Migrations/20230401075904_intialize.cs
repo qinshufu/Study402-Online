@@ -32,8 +32,7 @@ namespace Study402Online.ContentService.Api.Migrations
                 name: "CourseMarkets",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Chargeting = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OriginalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -128,18 +127,20 @@ namespace Study402Online.ContentService.Api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyId = table.Column<int>(type: "int", nullable: false),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Users = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Tags = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Class = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SubClass = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Grade = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeachMode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Picture = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifyTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Creater = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Updater = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifyTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Creater = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Updater = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AuditStatus = table.Column<int>(type: "int", nullable: false),
                     PublishStatus = table.Column<int>(type: "int", nullable: false)
                 },
@@ -198,13 +199,13 @@ namespace Study402Online.ContentService.Api.Migrations
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Duration = table.Column<int>(type: "int", nullable: true),
+                    Duration = table.Column<float>(type: "real", nullable: true),
                     OrderBy = table.Column<int>(type: "int", nullable: false),
                     CourseId = table.Column<int>(type: "int", nullable: false),
                     CoursePublish = table.Column<int>(type: "int", nullable: true),
                     Exists = table.Column<bool>(type: "bit", nullable: false),
                     Preview = table.Column<bool>(type: "bit", nullable: true),
-                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>

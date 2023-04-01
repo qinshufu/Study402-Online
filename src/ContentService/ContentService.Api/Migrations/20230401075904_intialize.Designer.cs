@@ -12,8 +12,8 @@ using Study402Online.ContentService.Api.Infrastructure;
 namespace Study402Online.ContentService.Api.Migrations
 {
     [DbContext(typeof(ContentDbContext))]
-    [Migration("20230331092222_allow-course-updater-null")]
-    partial class allowcourseupdaternull
+    [Migration("20230401075904_intialize")]
+    partial class intialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,14 +43,12 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CompanyName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreateTime")
+                    b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Creater")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -60,7 +58,7 @@ namespace Study402Online.ContentService.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ModifyTime")
+                    b.Property<DateTime?>("ModifyTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -128,10 +126,7 @@ namespace Study402Online.ContentService.Api.Migrations
             modelBuilder.Entity("Study402Online.ContentService.Model.DataModel.CourseMarket", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Chargeting")
                         .IsRequired()

@@ -123,10 +123,7 @@ namespace Study402Online.ContentService.Api.Migrations
             modelBuilder.Entity("Study402Online.ContentService.Model.DataModel.CourseMarket", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Chargeting")
                         .IsRequired()

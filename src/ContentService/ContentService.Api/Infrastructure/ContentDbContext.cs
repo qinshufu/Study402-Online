@@ -23,7 +23,16 @@ namespace Study402Online.ContentService.Api.Infrastructure
 
         public ContentDbContext(DbContextOptions<ContentDbContext> options) : base(options)
         {
-            
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CourseMarket>()
+                .Property(e => e.Id)
+                .ValueGeneratedNever();
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
