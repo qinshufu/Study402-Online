@@ -13,6 +13,51 @@
 
 还有一个比较严重的问题就是没有测试...所以只能看看代码，但是正确运行确实不一定的😀
 
+### 项目结构
+```
+.
+├── sql
+└── src
+    ├── ContentService
+    │   ├── ContentService.Api
+    │   │   ├── Application
+    │   │   │   ├── MapperProfiles
+    │   │   │   ├── RequestHandlers
+    │   │   │   └── Requests
+    │   │   ├── Controllers
+    │   │   ├── Infrastructure
+    │   │   ├── Migrations
+    │   │   └── Properties
+    │   └── ContentService.Model
+    │       ├── DataModel
+    │       └── ViewModel
+    ├── DictionaryService
+    │   ├── DictionaryService.Api
+    │   │   ├── Application
+    │   │   │   ├── RequestHandlers
+    │   │   │   └── Requests
+    │   │   ├── Controllers
+    │   │   ├── Instructure
+    │   │   ├── Migrations
+    │   │   └── Properties
+    │   └── DictionaryService.Model
+    │       └── DataModel
+    └── StudyOnline.Common
+        ├── Configurations
+        ├── Expression
+        ├── Helpers
+        ├── Linq
+        └── ViewModel
+```
+
+- sql 目录下为填充虚假内容的 sql
+- ContentService DictionaryService 分别为对应微服务的目录
+- StudyOneline.Common 项目为公用的类库
+- RequestHandlers 保存对应请求的处理器 Requests 目录保存对应请求
+- Infrastucture 保存基础设施
+- ContentService.Model DictionaryService.Model 保存试图模型以及数据库模型
+- ....
+
 ## 需要注意的问题
 
 ### 请求输入的验证
