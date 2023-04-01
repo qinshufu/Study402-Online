@@ -64,7 +64,7 @@ namespace Study402Online.ContentService.Api.Controllers
         }
 
         /// <summary>
-        /// 添加课程
+        /// 获取课程信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
