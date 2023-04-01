@@ -24,7 +24,7 @@ public class GetTeachPlanTreeCommandHandler : IRequestHandler<GetTeachPlanTreeCo
             var result = new TeachPlanTreeNode();
             PocoHelper.CopyProperties(chapter, result);
             result.CourseSections = sections
-                .Select(p => PocoHelper.Make<TeachPlan, TeachPlanTreeNode>(p))
+                .Select(p => PocoHelper.Make<TeachPlanTreeNode>(p))
                 .ToList();
             return result;
         }
