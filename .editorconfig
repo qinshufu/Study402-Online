@@ -1,3 +1,7 @@
+[*.{xml,json,js,html}]
+tab_width = 2
+indent_size = 2
+
 
 [*.{cs,vb}]
 #### Naming styles ####
