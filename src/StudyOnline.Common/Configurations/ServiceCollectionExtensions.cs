@@ -10,7 +10,7 @@ namespace Study402Online.Common.Configurations
             this IServiceCollection services,
             Action<SwaggerGenOptions>? setupAction = null)
         {
-            var xmlname = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+            var xmlname = Assembly.GetEntryAssembly().GetName().Name + ".xml";
             var path = Path.Combine(AppContext.BaseDirectory, xmlname);
 
             services.AddSwaggerGen(opts => opts.IncludeXmlComments(path, true));
