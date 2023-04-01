@@ -1,12 +1,11 @@
 using Dapper;
 using MediatR;
-using Study402Online.ContentService.Api.Application.Requests;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
 using System.Data.Common;
 using System.Text.RegularExpressions;
 
-namespace Study402Online.ContentService.Api.Application.RequestHandlers
+namespace Study402Online.ContentService.Api.Application.Queries
 {
     public class CourseCategoriesQueryHandler : IRequestHandler<CourseCategoriesQuery, CourseCategoriesTreeModel>
     {

@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Study402Online.ContentService.Api.Application.Requests;
+using Study402Online.ContentService.Api.Application.Queries;
 using Study402Online.ContentService.Model.ViewModel;
 
 namespace Study402Online.ContentService.Api.Controllers

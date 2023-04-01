@@ -1,7 +1,7 @@
 using MediatR;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 
-namespace Study402Online.ContentService.Api.Controllers
+namespace Study402Online.ContentService.Api.Application.Commands
 {
     /// <summary>
     /// 添加课程命令

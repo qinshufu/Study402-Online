@@ -1,11 +1,10 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Study402Online.Common.Helpers;
-using Study402Online.ContentService.Api.Application.Requests;
 using Study402Online.ContentService.Api.Infrastructure;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 
-namespace Study402Online.ContentService.Api.Application.RequestHandlers;
+namespace Study402Online.ContentService.Api.Application.Commands;
 
 /// <summary>
 /// 更新课程处理器

@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Study402Online.ContentService.Api.Application.Requests;
+using Study402Online.ContentService.Api.Application.Queries;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 
 namespace Study402Online.ContentService.Api.Controllers
@@ -24,7 +24,7 @@ namespace Study402Online.ContentService.Api.Controllers
         [HttpGet("tree")]
         public Task<List<TeachPlanTreeNode>> GetTeachPlans([FromQuery] int course)
         {
-            var command = new GetTeachPlanTreeCommand(course);
+            var command = new TeachPlanTreeQuery(course);
             return _mediator.Send(command);
         }
     }

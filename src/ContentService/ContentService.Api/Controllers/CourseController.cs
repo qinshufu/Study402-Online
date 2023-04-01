@@ -2,11 +2,12 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Study402Online.Common.ViewModel;
 using Study402Online.Common.Expressions;
-using Study402Online.ContentService.Api.Application.Requests;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
 using System.Linq.Expressions;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
+using Study402Online.ContentService.Api.Application.Queries;
+using Study402Online.ContentService.Api.Application.Commands;
 
 namespace Study402Online.ContentService.Api.Controllers
 {
@@ -71,7 +72,7 @@ namespace Study402Online.ContentService.Api.Controllers
         [HttpGet("get")]
         public Task<CourseInformationModel> GetCourse([FromQuery] int id)
         {
-            var command = new GetCourseQuery(id);
+            var command = new CourseQuery(id);
             return _mediator.Send(command);
         }
 

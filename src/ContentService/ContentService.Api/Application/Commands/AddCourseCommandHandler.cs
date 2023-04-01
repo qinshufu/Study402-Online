@@ -1,11 +1,10 @@
 using AutoMapper;
 using MediatR;
-using Study402Online.ContentService.Api.Controllers;
 using Study402Online.ContentService.Api.Infrastructure;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 
-namespace Study402Online.ContentService.Api.Application.RequestHandlers;
+namespace Study402Online.ContentService.Api.Application.Commands;
 
 /// <summary>
 /// 添加课程命令处理器

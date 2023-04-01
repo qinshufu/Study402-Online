@@ -1,7 +1,7 @@
 using MediatR;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 
-namespace Study402Online.ContentService.Api.Application.Requests;
+namespace Study402Online.ContentService.Api.Application.Commands;
 
 
 /// <summary>

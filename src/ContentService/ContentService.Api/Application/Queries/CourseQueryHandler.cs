@@ -1,22 +1,21 @@
 using MediatR;
-using Study402Online.ContentService.Api.Application.Requests;
 using Study402Online.ContentService.Api.Infrastructure;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 using Study402Online.Common.Helpers;
 using Microsoft.EntityFrameworkCore;
 
-namespace Study402Online.ContentService.Api.Application.RequestHandlers;
+namespace Study402Online.ContentService.Api.Application.Queries;
 
 /// <summary>
 /// 获取课程信息查询
 /// </summary>
-public class GetCourseQueryHandler : IRequestHandler<GetCourseQuery, CourseInformationModel>
+public class CourseQueryHandler : IRequestHandler<CourseQuery, CourseInformationModel>
 {
     private readonly ContentDbContext _context;
 
-    public GetCourseQueryHandler(ContentDbContext context) => _context = context;
+    public CourseQueryHandler(ContentDbContext context) => _context = context;
 
-    public async Task<CourseInformationModel> Handle(GetCourseQuery request, CancellationToken cancellationToken)
+    public async Task<CourseInformationModel> Handle(CourseQuery request, CancellationToken cancellationToken)
     {
         var course = await _context.Courses.SingleAsync(c => c.Id == request.Id);
         var courseMarket = await _context.CourseMarkets.SingleAsync(c => c.Id == request.Id);

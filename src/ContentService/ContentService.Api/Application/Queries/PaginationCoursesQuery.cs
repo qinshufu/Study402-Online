@@ -3,7 +3,7 @@ using Study402Online.Common.ViewModel;
 using Study402Online.ContentService.Model.DataModel;
 using System.Linq.Expressions;
 
-namespace Study402Online.ContentService.Api.Application.Requests
+namespace Study402Online.ContentService.Api.Application.Queries
 {
     public class PaginationCoursesQuery : IRequest<PaginationResult<Course>>
     {

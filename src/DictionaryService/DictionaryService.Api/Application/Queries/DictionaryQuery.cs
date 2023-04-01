@@ -3,13 +3,13 @@ using Study402Online.DictionaryService.Model.DataModel;
 
 namespace Study402Online.DictionaryService.Api.Application.Request
 {
-    public class QueryDictionaryRequest : IRequest<DataDictionary>
+    public class DictionaryQuery : IRequest<DataDictionary>
     {
         private readonly string _code;
 
         public string Code => _code;
 
-        public QueryDictionaryRequest(string code)
+        public DictionaryQuery(string code)
         {
             _code = code;
         }
