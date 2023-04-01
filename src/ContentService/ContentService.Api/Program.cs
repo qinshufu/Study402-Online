@@ -4,8 +4,12 @@ using Study402Online.ContentService.Api.Infrastructure;
 using Study402Online.Common.Configurations;
 using System.Reflection;
 using Autofac;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
+
+/// 添加 AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 // 适用 AutoFac
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
