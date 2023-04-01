@@ -1,7 +1,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Study402Online.Common.Linq;
-using Study402Online.Common.ViewModel;
 using Study402Online.ContentService.Api.Infrastructure;
 using Study402Online.ContentService.Model.DataModel;
 

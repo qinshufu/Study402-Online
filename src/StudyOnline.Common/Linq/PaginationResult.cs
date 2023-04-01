@@ -1,4 +1,4 @@
-namespace Study402Online.Common.ViewModel;
+namespace Study402Online.Common.Linq;
 
 public class PaginationResult<T>
 {

@@ -1,5 +1,5 @@
 using MediatR;
-using Study402Online.Common.ViewModel;
+using Study402Online.Common.Linq;
 using Study402Online.ContentService.Model.DataModel;
 using System.Linq.Expressions;
 
