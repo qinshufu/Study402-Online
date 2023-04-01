@@ -83,7 +83,8 @@ namespace Study402Online.ContentService.Api.Controllers
         [HttpPut("update")]
         public Task<CourseInformationModel> UpdateCourse([FromBody] UpdateCourseModel model)
         {
-
+            var command = new UpdateCourseCommand(model);
+            return _mediator.Send(command);
         }
     }
 }
