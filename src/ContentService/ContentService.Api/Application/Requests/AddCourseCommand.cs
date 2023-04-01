@@ -6,7 +6,7 @@ namespace Study402Online.ContentService.Api.Controllers
     /// <summary>
     /// 添加课程命令
     /// </summary>
-    public class AddCourseCommand : IRequest<AddCourseResultModel>
+    public class AddCourseCommand : IRequest<CourseInformationModel>
     {
         public AddCourseModel Model { get; }
 

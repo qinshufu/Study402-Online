@@ -3,7 +3,7 @@ namespace Study402Online.Study402Online.ContentService.Model.ViewModel
     /// <summary>
     /// 添加课程后的返回响应
     /// </summary>
-    public class AddCourseResultModel
+    public class CourseInformationModel
     {
         /// <summary>
         /// 主键

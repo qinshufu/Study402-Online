@@ -13,6 +13,6 @@ public class CourseMapperProfile : Profile
     {
         CreateMap<AddCourseModel, Course>();
         CreateMap<AddCourseModel, CourseMarket>();
-        CreateMap<AddCourseModel, AddCourseResultModel>();
+        CreateMap<AddCourseModel, CourseInformationModel>();
     }
 }

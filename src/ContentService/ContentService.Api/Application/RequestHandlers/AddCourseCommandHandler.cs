@@ -10,7 +10,7 @@ namespace Study402Online.ContentService.Api.Application.RequestHandlers;
 /// <summary>
 /// 添加课程命令处理器
 /// </summary>
-public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, AddCourseResultModel>
+public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, CourseInformationModel>
 {
     private readonly ContentDbContext _context;
     private readonly IMapper _mapper;
@@ -21,7 +21,7 @@ public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, AddCour
         _mapper = mapper;
     }
 
-    public async Task<AddCourseResultModel> Handle(AddCourseCommand command, CancellationToken cancellationToken)
+    public async Task<CourseInformationModel> Handle(AddCourseCommand command, CancellationToken cancellationToken)
     {
         var course = _mapper.Map<Course>(command.Model);
         _context.Add(course);
@@ -32,7 +32,7 @@ public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, AddCour
         _context.Add(couseMarket);
         await _context.SaveChangesAsync();
 
-        var result = _mapper.Map<AddCourseResultModel>(command);
+        var result = _mapper.Map<CourseInformationModel>(command);
         return result;
     }
 }

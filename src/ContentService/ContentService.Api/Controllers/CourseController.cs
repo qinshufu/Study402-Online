@@ -57,7 +57,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public Task<AddCourseResultModel> AddCourse([FromBody] AddCourseModel model)
+        public Task<CourseInformationModel> AddCourse([FromBody] AddCourseModel model)
         {
             var command = new AddCourseCommand(model);
             return _mediator.Send(command);
