@@ -6,6 +6,7 @@ using Study402Online.ContentService.Api.Application.Requests;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
 using System.Linq.Expressions;
+using Study402Online.Study402Online.ContentService.Model.ViewModel;
 
 namespace Study402Online.ContentService.Api.Controllers
 {
@@ -23,6 +24,13 @@ namespace Study402Online.ContentService.Api.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// 课程列表（分页）
+        /// </summary>
+        /// <param name="queryParams"></param>
+        /// <param name="pageNo"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
         [HttpPost("list")]
         public Task<PaginationResult<Course>> Pagination(
             [FromBody] QueryCourseModel queryParams,
@@ -41,6 +49,18 @@ namespace Study402Online.ContentService.Api.Controllers
 
             var request = new PaginationCoursesRequest(pageNo, pageSize, exp);
             return _mediator.Send(request);
+        }
+
+        /// <summary>
+        /// 添加课程
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("add")]
+        public Task<AddCourseResultModel> AddCourse([FromBody] AddCourseModel model)
+        {
+            var command = new AddCourseCommand(model);
+            return _mediator.Send(command);
         }
     }
 }
