@@ -1,9 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Study402Online.Common.Expressions;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
-using System.Linq.Expressions;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 using Study402Online.ContentService.Api.Application.Queries;
 using Study402Online.ContentService.Api.Application.Commands;
@@ -37,18 +35,7 @@ namespace Study402Online.ContentService.Api.Controllers
             [FromBody] QueryCourseModel queryParams,
             [FromQuery] int pageNo = 1, [FromQuery] int pageSize = 10)
         {
-            Expression<Func<Course, bool>> exp = c => true;
-
-            if (queryParams.AuditStatus is not null)
-                exp = exp.And(c => c.AuditStatus == queryParams.AuditStatus);
-
-            if (queryParams.PublishStatus is not null)
-                exp = exp.And(c => c.PublishStatus == queryParams.PublishStatus);
-
-            if (queryParams.CourseName is not null)
-                exp = exp.And((Course c) => c.Name.Contains(queryParams.CourseName));
-
-            var request = new PaginationCoursesQuery(pageNo, pageSize, exp);
+            var request = new PaginationCoursesQuery(pageNo, pageSize, queryParams);
             return _mediator.Send(request);
         }
 
