@@ -8,16 +8,16 @@ using Study402Online.ContentService.Model.DataModel;
 
 namespace Study402Online.ContentService.Api.Application.RequestHandlers
 {
-    public class PaginationCoursesHandler : IRequestHandler<PaginationCoursesRequest, PaginationResult<Course>>
+    public class PaginationCoursesQueryHandler : IRequestHandler<PaginationCoursesQuery, PaginationResult<Course>>
     {
         private readonly DbSet<Course> _courses;
 
-        public PaginationCoursesHandler(ContentDbContext context)
+        public PaginationCoursesQueryHandler(ContentDbContext context)
         {
             _courses = context.Set<Course>();
         }
 
-        public Task<PaginationResult<Course>> Handle(PaginationCoursesRequest request, CancellationToken cancellationToken)
+        public Task<PaginationResult<Course>> Handle(PaginationCoursesQuery request, CancellationToken cancellationToken)
             => _courses.Where(request.Predicator).OrderBy(c => c.CreateTime).PaginationAsync(request.PageNumber, request.PageSize);
     }
 }

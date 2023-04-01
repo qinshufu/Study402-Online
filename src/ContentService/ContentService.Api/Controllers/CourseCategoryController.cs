@@ -5,6 +5,9 @@ using Study402Online.ContentService.Model.ViewModel;
 
 namespace Study402Online.ContentService.Api.Controllers
 {
+    /// <summary>
+    /// 课程分类
+    /// </summary>
     [Route("api/course-category")]
     [ApiController]
     public class CourseCategoryController : ControllerBase
@@ -23,6 +26,6 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <returns></returns>
         [HttpGet("tree-nodes")]
         public Task<CourseCategoriesTreeModel> Get([FromQuery] string id)
-            => _mediator.Send(new QueryCourseCategoriesRequest(id));
+            => _mediator.Send(new CourseCategoriesQuery(id));
     }
 }

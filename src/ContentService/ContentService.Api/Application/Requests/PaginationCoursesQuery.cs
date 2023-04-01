@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 
 namespace Study402Online.ContentService.Api.Application.Requests
 {
-    public class PaginationCoursesRequest : IRequest<PaginationResult<Course>>
+    public class PaginationCoursesQuery : IRequest<PaginationResult<Course>>
     {
-        public PaginationCoursesRequest(int pageNumber, int pageSize, Expression<Func<Course, bool>> predicator)
+        public PaginationCoursesQuery(int pageNumber, int pageSize, Expression<Func<Course, bool>> predicator)
         {
             PageNumber = pageNumber;
             PageSize = pageSize;

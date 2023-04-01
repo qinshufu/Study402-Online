@@ -47,7 +47,7 @@ namespace Study402Online.ContentService.Api.Controllers
             if (queryParams.CourseName is not null)
                 exp = exp.And((Course c) => c.Name.Contains(queryParams.CourseName));
 
-            var request = new PaginationCoursesRequest(pageNo, pageSize, exp);
+            var request = new PaginationCoursesQuery(pageNo, pageSize, exp);
             return _mediator.Send(request);
         }
 

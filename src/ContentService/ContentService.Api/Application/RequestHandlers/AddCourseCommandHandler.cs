@@ -10,12 +10,12 @@ namespace Study402Online.ContentService.Api.Application.RequestHandlers;
 /// <summary>
 /// 添加课程命令处理器
 /// </summary>
-public class AddCourseHandler : IRequestHandler<AddCourseCommand, AddCourseResultModel>
+public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, AddCourseResultModel>
 {
     private readonly ContentDbContext _context;
     private readonly IMapper _mapper;
 
-    public AddCourseHandler(ContentDbContext context, IMapper mapper)
+    public AddCourseCommandHandler(ContentDbContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;

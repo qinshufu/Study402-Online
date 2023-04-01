@@ -8,16 +8,16 @@ using System.Text.RegularExpressions;
 
 namespace Study402Online.ContentService.Api.Application.RequestHandlers
 {
-    public class QueryCourseCategoriesHandler : IRequestHandler<QueryCourseCategoriesRequest, CourseCategoriesTreeModel>
+    public class CourseCategoriesQueryHandler : IRequestHandler<CourseCategoriesQuery, CourseCategoriesTreeModel>
     {
         private readonly DbConnection _connection;
 
-        public QueryCourseCategoriesHandler(DbConnection connection)
+        public CourseCategoriesQueryHandler(DbConnection connection)
         {
             _connection = connection;
         }
 
-        public async Task<CourseCategoriesTreeModel> Handle(QueryCourseCategoriesRequest request, CancellationToken cancellationToken)
+        public async Task<CourseCategoriesTreeModel> Handle(CourseCategoriesQuery request, CancellationToken cancellationToken)
         {
             // 递归查询
             var sql = @"
