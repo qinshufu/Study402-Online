@@ -13,7 +13,7 @@ namespace Study402Online.Study402Online.ContentService.Model.ViewModel
         /// <summary>
         /// 课程名称
         /// </summary>
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// 适用人群

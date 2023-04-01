@@ -62,5 +62,28 @@ namespace Study402Online.ContentService.Api.Controllers
             var command = new AddCourseCommand(model);
             return _mediator.Send(command);
         }
+
+        /// <summary>
+        /// 添加课程
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("get")]
+        public Task<CourseInformationModel> GetCourse([FromQuery] int id)
+        {
+            var command = new GetCourseQuery(id);
+            return _mediator.Send(command);
+        }
+
+        /// <summary>
+        /// 修改课程
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut("update")]
+        public Task<CourseInformationModel> UpdateCourse([FromBody] UpdateCourseModel model)
+        {
+
+        }
     }
 }

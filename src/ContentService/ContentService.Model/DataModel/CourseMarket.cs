@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Study402Online.ContentService.Model.DataModel
 {
@@ -11,6 +7,7 @@ namespace Study402Online.ContentService.Model.DataModel
     /// </summary>
     public class CourseMarket
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         /// <summary>
