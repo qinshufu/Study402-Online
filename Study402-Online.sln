@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyOnline.Common", "src\StudyOnline.Common\StudyOnline.Common.csproj", "{76CB5AEC-F23B-4E67-B4CF-1091E2B07EBE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContentService", "ContentService", "{25217203-353A-4339-BDE7-9E88B993E82D}"
+	ProjectSection(SolutionItems) = preProject
+		src\ContentService\ContentService.Api\README.md = src\ContentService\ContentService.Api\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Api", "src\ContentService\ContentService.Api\ContentService.Api.csproj", "{7355AD4A-228A-4B22-8514-E099B71E0F77}"
 EndProject
@@ -15,9 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentService.Model", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DictionaryService", "DictionaryService", "{AB46DB73-CE49-4337-82EE-BF53E39DE7B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Api", "src\DictionaryService\DictionaryService.Api\DictionaryService.Api.csproj", "{AA9576A0-02E8-4253-B6AB-C5897741166C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryService.Api", "src\DictionaryService\DictionaryService.Api\DictionaryService.Api.csproj", "{AA9576A0-02E8-4253-B6AB-C5897741166C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryService.Model", "src\DictionaryService\DictionaryService.Model\DictionaryService.Model.csproj", "{EC16680B-9337-4385-AFE3-BB23F7D50923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryService.Model", "src\DictionaryService\DictionaryService.Model\DictionaryService.Model.csproj", "{EC16680B-9337-4385-AFE3-BB23F7D50923}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
