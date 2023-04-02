@@ -14,5 +14,6 @@ public class CourseMapperProfile : Profile
         CreateMap<AddCourseModel, Course>();
         CreateMap<AddCourseModel, CourseMarket>();
         CreateMap<AddCourseModel, CourseInformationModel>();
+        CreateMap<AddTeachPlanModel, TeachPlan>();
     }
 }
