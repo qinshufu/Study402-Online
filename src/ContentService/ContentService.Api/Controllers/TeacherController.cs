@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Study402Online.Common.Model;
 using Study402Online.ContentService.Api.Application.Commands;
-using Study402Online.Study402Online.ContentService.Model.DataModel;
+using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
 
 namespace Study402Online.ContentService.Api.Controllers
@@ -25,7 +25,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="teacher"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public Task<Result<CourseTeacher>> AddTeacher([FromBody] AddTeacherModel teacher)
+        public Task<Result<CourseTeacherRelation>> AddTeacher([FromBody] AddTeacherModel teacher)
         {
             var command = new AddTeacherCommand(teacher);
             return _mediator.Send(command);
