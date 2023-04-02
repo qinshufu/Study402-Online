@@ -36,7 +36,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public Task<TeachPlan> AddTeachPlan([FromQuery] AddTeachPlanModel model)
+        public Task<TeachPlan> AddTeachPlan([FromBody] AddTeachPlanModel model)
         {
             var command = new AddTeachPlanCommand(model);
             return _mediator.Send(command);
@@ -52,6 +52,18 @@ namespace Study402Online.ContentService.Api.Controllers
         {
             var command = new UpdateTeachPlanCommand(model);
             return _mediator.Send(command);
+        }
+
+        /// <summary>
+        /// 删除课程计划
+        /// </summary>
+        /// <param name="teachPlan"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task DeleteTeachPlan([FromQuery] int teachPlan)
+        {
+            var command = new DeleteTeachPlanCommand(teachPlan);
+            var _ = await _mediator.Send(command);
         }
     }
 }
