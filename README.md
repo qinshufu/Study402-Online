@@ -74,3 +74,8 @@
 ## 开发环境
 
 VS2022 + .NET7 + windows10 + Docker Desktop
+
+## TODO
+
+- [ ] 设置 CreateTime 字段为数据库提供默认值，Creater Updater 等字段没有设置...
+- [ ] 为模型字段配置合适的数据库类型，例如存储大文本的字段使用 text 类型
