@@ -75,5 +75,17 @@ namespace Study402Online.ContentService.Api.Controllers
             var command = new UpdateCourseCommand(model);
             return _mediator.Send(command);
         }
+
+        /// <summary>
+        /// 删除课程
+        /// </summary>
+        /// <param name="course"></param>
+        /// <returns></returns>
+        [HttpDelete("delete")]
+        public Task<Result<object>> DeleteCourse([FromQuery] int course)
+        {
+            var command = new DeleteCourseCommand(course);
+            return _mediator.Send(command);
+        }
     }
 }
