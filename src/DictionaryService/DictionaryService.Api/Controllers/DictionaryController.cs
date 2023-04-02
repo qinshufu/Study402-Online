@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Study402Online.Common.Model;
 using Study402Online.DictionaryService.Api.Application.Request;
 using Study402Online.DictionaryService.Model.DataModel;
 
@@ -17,9 +18,9 @@ namespace Study402Online.DictionaryService.Api.Controllers
         }
 
         [HttpGet("all")]
-        public Task<List<DataDictionary>> All() => _mediator.Send(new AllDictionaryQuery());
+        public Task<Result<List<DataDictionary>>> All() => _mediator.Send(new AllDictionaryQuery());
 
         [HttpGet("code")]
-        public Task<DataDictionary> GetByCode([FromQuery] string code) => _mediator.Send(new DictionaryQuery(code));
+        public Task<Result<DataDictionary>> GetByCode([FromQuery] string code) => _mediator.Send(new DictionaryQuery(code));
     }
 }

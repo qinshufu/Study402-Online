@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Study402Online.Common.Model;
 using Study402Online.ContentService.Api.Application.Commands;
 using Study402Online.ContentService.Api.Application.Queries;
 using Study402Online.ContentService.Model.DataModel;
@@ -24,7 +25,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="course"></param>
         /// <returns></returns>
         [HttpGet("tree")]
-        public Task<List<TeachPlanTreeNode>> GetTeachPlans([FromQuery] int course)
+        public Task<Result<List<TeachPlanTreeNode>>> GetTeachPlans([FromQuery] int course)
         {
             var command = new TeachPlanTreeQuery(course);
             return _mediator.Send(command);
@@ -36,7 +37,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public Task<TeachPlan> AddTeachPlan([FromBody] AddTeachPlanModel model)
+        public Task<Result<TeachPlan>> AddTeachPlan([FromBody] AddTeachPlanModel model)
         {
             var command = new AddTeachPlanCommand(model);
             return _mediator.Send(command);
@@ -48,7 +49,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        public Task<TeachPlan> UpdateTeachPlan([FromBody] UpdateTeachPlanModel model)
+        public Task<Result<TeachPlan>> UpdateTeachPlan([FromBody] UpdateTeachPlanModel model)
         {
             var command = new UpdateTeachPlanCommand(model);
             return _mediator.Send(command);
@@ -60,10 +61,10 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="teachPlan"></param>
         /// <returns></returns>
         [HttpDelete]
-        public async Task DeleteTeachPlan([FromQuery] int teachPlan)
+        public Task<Result<int>> DeleteTeachPlan([FromQuery] int teachPlan)
         {
             var command = new DeleteTeachPlanCommand(teachPlan);
-            var _ = await _mediator.Send(command);
+            return _mediator.Send(command);
         }
     }
 }

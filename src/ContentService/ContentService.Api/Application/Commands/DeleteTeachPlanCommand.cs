@@ -1,4 +1,5 @@
 using MediatR;
+using Study402Online.Common.Model;
 
 namespace Study402Online.ContentService.Api.Application.Commands;
 
@@ -6,4 +7,4 @@ namespace Study402Online.ContentService.Api.Application.Commands;
 /// 删除课程计划命令
 /// </summary>
 /// <param name="TeachPlan"></param>
-public record DeleteTeachPlanCommand(int TeachPlan) : IRequest<int>;
+public record DeleteTeachPlanCommand(int TeachPlan) : IRequest<Result<int>>;

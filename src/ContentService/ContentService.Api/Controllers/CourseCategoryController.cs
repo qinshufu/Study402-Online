@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Study402Online.Common.Model;
 using Study402Online.ContentService.Api.Application.Queries;
 using Study402Online.ContentService.Model.ViewModel;
 
@@ -25,7 +26,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("tree-nodes")]
-        public Task<CourseCategoriesTreeModel> Get([FromQuery] string id)
+        public Task<Result<CourseCategoriesTreeModel>> Get([FromQuery] string id)
             => _mediator.Send(new CourseCategoriesQuery(id));
     }
 }

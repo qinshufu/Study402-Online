@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Study402Online.Common.Model;
 using Study402Online.ContentService.Api.Infrastructure;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
@@ -9,7 +10,7 @@ namespace Study402Online.ContentService.Api.Application.Commands;
 /// <summary>
 /// 添加课程命令处理器
 /// </summary>
-public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, CourseInformationModel>
+public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, Result<CourseInformationModel>>
 {
     private readonly ContentDbContext _context;
     private readonly IMapper _mapper;
@@ -20,7 +21,7 @@ public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, CourseI
         _mapper = mapper;
     }
 
-    public async Task<CourseInformationModel> Handle(AddCourseCommand command, CancellationToken cancellationToken)
+    public async Task<Result<CourseInformationModel>> Handle(AddCourseCommand command, CancellationToken cancellationToken)
     {
         var course = _mapper.Map<Course>(command.Model);
         _context.Add(course);
@@ -32,6 +33,6 @@ public class AddCourseCommandHandler : IRequestHandler<AddCourseCommand, CourseI
         await _context.SaveChangesAsync();
 
         var result = _mapper.Map<CourseInformationModel>(command);
-        return result;
+        return ResultFactory.Success(result);
     }
 }

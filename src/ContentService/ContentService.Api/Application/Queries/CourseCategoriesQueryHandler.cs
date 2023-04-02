@@ -1,5 +1,6 @@
 using Dapper;
 using MediatR;
+using Study402Online.Common.Model;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
 using System.Data.Common;
@@ -7,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Study402Online.ContentService.Api.Application.Queries
 {
-    public class CourseCategoriesQueryHandler : IRequestHandler<CourseCategoriesQuery, CourseCategoriesTreeModel>
+    public class CourseCategoriesQueryHandler : IRequestHandler<CourseCategoriesQuery, Result<CourseCategoriesTreeModel>>
     {
         private readonly DbConnection _connection;
 
@@ -16,7 +17,7 @@ namespace Study402Online.ContentService.Api.Application.Queries
             _connection = connection;
         }
 
-        public async Task<CourseCategoriesTreeModel> Handle(CourseCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<Result<CourseCategoriesTreeModel>> Handle(CourseCategoriesQuery request, CancellationToken cancellationToken)
         {
             // 递归查询
             var sql = @"
@@ -31,11 +32,11 @@ select * from CourseCategoriesTreeQuery;";
             var categories = await _connection.QueryAsync<CourseCategory>(sql, new { id = request.Id });
 
             if (categories.Any() is false)
-                throw new InvalidOperationException("指定课程分类不存在: " + request.Id);
+                return ResultFactory.Fail<CourseCategoriesTreeModel>("指定课程分类不存在: " + request.Id);
 
             var root = categories.Single(c => c.Id == request.Id);
             var children = GetCategorityNodeChildren(root, categories, cancellationToken).ToList();
-            return CourseCategoriesTreeModel.Create(root, children);
+            return ResultFactory.Success(CourseCategoriesTreeModel.Create(root, children));
         }
 
         private IEnumerable<CourseCategoriesTreeModel> GetCategorityNodeChildren(

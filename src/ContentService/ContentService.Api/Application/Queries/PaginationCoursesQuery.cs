@@ -1,6 +1,7 @@
 using MediatR;
 using Study402Online.Common.Expressions;
 using Study402Online.Common.Linq;
+using Study402Online.Common.Model;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
 using System.Linq.Expressions;
@@ -10,7 +11,7 @@ namespace Study402Online.ContentService.Api.Application.Queries
     /// <summary>
     /// 课程分页查询
     /// </summary>
-    public class PaginationCoursesQuery : IRequest<PaginationResult<Course>>
+    public class PaginationCoursesQuery : IRequest<Result<PaginationResult<Course>>>
     {
 
         public PaginationCoursesQuery(int pageNo, int pageSize, QueryCourseModel queryParams)

@@ -6,6 +6,7 @@ using Study402Online.Study402Online.ContentService.Model.ViewModel;
 using Study402Online.ContentService.Api.Application.Queries;
 using Study402Online.ContentService.Api.Application.Commands;
 using Study402Online.Common.Linq;
+using Study402Online.Common.Model;
 
 namespace Study402Online.ContentService.Api.Controllers
 {
@@ -31,7 +32,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="pageSize"></param>
         /// <returns></returns>
         [HttpPost("list")]
-        public Task<PaginationResult<Course>> Pagination(
+        public Task<Result<PaginationResult<Course>>> Pagination(
             [FromBody] QueryCourseModel queryParams,
             [FromQuery] int pageNo = 1, [FromQuery] int pageSize = 10)
         {
@@ -45,7 +46,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        public Task<CourseInformationModel> AddCourse([FromBody] AddCourseModel model)
+        public Task<Result<CourseInformationModel>> AddCourse([FromBody] AddCourseModel model)
         {
             var command = new AddCourseCommand(model);
             return _mediator.Send(command);
@@ -57,7 +58,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("get")]
-        public Task<CourseInformationModel> GetCourse([FromQuery] int id)
+        public Task<Result<CourseInformationModel>> GetCourse([FromQuery] int id)
         {
             var command = new CourseQuery(id);
             return _mediator.Send(command);
@@ -69,7 +70,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        public Task<CourseInformationModel> UpdateCourse([FromBody] UpdateCourseModel model)
+        public Task<Result<CourseInformationModel>> UpdateCourse([FromBody] UpdateCourseModel model)
         {
             var command = new UpdateCourseCommand(model);
             return _mediator.Send(command);

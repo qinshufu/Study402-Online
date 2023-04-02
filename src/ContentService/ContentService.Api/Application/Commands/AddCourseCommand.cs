@@ -1,4 +1,5 @@
 using MediatR;
+using Study402Online.Common.Model;
 using Study402Online.Study402Online.ContentService.Model.ViewModel;
 
 namespace Study402Online.ContentService.Api.Application.Commands
@@ -6,7 +7,7 @@ namespace Study402Online.ContentService.Api.Application.Commands
     /// <summary>
     /// 添加课程命令
     /// </summary>
-    public class AddCourseCommand : IRequest<CourseInformationModel>
+    public class AddCourseCommand : IRequest<Result<CourseInformationModel>>
     {
         public AddCourseModel Model { get; }
 
