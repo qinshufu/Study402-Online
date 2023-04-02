@@ -3,27 +3,27 @@ namespace Study402Online.Study402Online.ContentService.Model.ViewModel;
 public class AddTeacherModel
 {
     /// <summary>
-    /// 课程
+    /// 课程 ID
     /// </summary>
-    public int Course { get; set; }
+    public int CourseId { get; set; }
 
     /// <summary>
-    /// 名称
+    /// 教师名称
     /// </summary>
-    public string Name { get; set; }
+    public string TeacherName { get; set; }
 
     /// <summary>
-    /// 职位
+    /// 教师职位
     /// </summary>
-    public string Position { get; set; }
+    public string TeacherPosition { get; set; }
 
     /// <summary>
-    /// 简介
+    /// 教师简介
     /// </summary>
-    public string Introduction { get; set; }
+    public string TeacherIntroduction { get; set; }
 
     /// <summary>
-    /// 照片
+    /// 教师照片
     /// </summary>
-    public Uri Photograph { get; set; }
+    public string? TeacherPhotograph { get; set; }
 }
