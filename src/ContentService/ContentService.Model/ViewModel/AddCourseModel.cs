@@ -1,4 +1,4 @@
-namespace Study402Online.Study402Online.ContentService.Model.ViewModel
+namespace Study402Online.ContentService.Model.ViewModel
 {
     /// <summary>
     /// 添加课程模型

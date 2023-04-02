@@ -1,6 +1,6 @@
 using Study402Online.ContentService.Model.DataModel;
 
-namespace Study402Online.Study402Online.ContentService.Model.ViewModel;
+namespace Study402Online.ContentService.Model.ViewModel;
 
 /// <summary>
 /// 课程计划树形节点

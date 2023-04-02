@@ -1,6 +1,6 @@
 using MediatR;
 using Study402Online.Common.Model;
-using Study402Online.Study402Online.ContentService.Model.ViewModel;
+using Study402Online.ContentService.Model.ViewModel;
 
 namespace Study402Online.ContentService.Api.Application.Queries;
 

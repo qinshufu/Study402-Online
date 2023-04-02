@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Study402Online.ContentService.Model.DataModel;
 using Study402Online.ContentService.Model.ViewModel;
-using Study402Online.Study402Online.ContentService.Model.ViewModel;
+using Study402Online.ContentService.Model.ViewModel;
 using Study402Online.ContentService.Api.Application.Queries;
 using Study402Online.ContentService.Api.Application.Commands;
 using Study402Online.Common.Linq;
