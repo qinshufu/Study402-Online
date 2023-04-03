@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
+    <ProjectReference Include="..\..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
     <ProjectReference Include="..\ContentService.Model\ContentService.Model.csproj" />
   </ItemGroup>
 

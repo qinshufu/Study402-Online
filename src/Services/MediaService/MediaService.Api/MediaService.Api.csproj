@@ -29,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
+        <ProjectReference Include="..\..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
         <ProjectReference Include="..\MediaService.Model\MediaService.Model.csproj" />
     </ItemGroup>
 
