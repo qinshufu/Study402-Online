@@ -4,7 +4,9 @@ using Study402Online.ContentService.Api.Infrastructure;
 using Study402Online.Common.Configurations;
 using System.Reflection;
 using Autofac;
-using AutoMapper;
+using Winton.Extensions.Configuration.Consul;
+using Microsoft.Extensions.Options;
+using Study402Online.Common.BackgroundServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//添加 Consul
+builder.Services.AddConsul();
+builder.Services.AddOptions<ConsulOptions>().BindConfiguration("Consul");
+builder.Configuration.AddConsul("Study402Online/ContentService/appsettings.json");
+
 builder.Services.AddMediatR(options => options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 // 添加数据库
@@ -40,6 +47,23 @@ builder.Services.AddEntityFrameworkSqlServer()
 builder.Services.AddSwaggerGenDefault();
 
 var app = builder.Build();
+
+app.UseConsul(consul =>
+{
+    var options = app.Services.GetRequiredService<IOptions<ConsulOptions>>().Value;
+
+    consul.Agent.ServiceRegister(new Consul.AgentServiceRegistration
+    {
+        ID = options.ServiceId,
+        Name = options.ServiceName,
+        Address = options.ServiceAddress,
+        Port = options.ServicePort,
+        Check = new Consul.AgentServiceCheck
+        {
+            TTL = TimeSpan.FromSeconds(options.TTL)
+        }
+    });
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
