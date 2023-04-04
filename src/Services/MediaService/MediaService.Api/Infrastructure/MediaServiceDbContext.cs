@@ -11,6 +11,10 @@ public class MediaServiceDbContext : DbContext
 
     public DbSet<MediaProcessHistory> MediaProcessHistories { get; set; }
 
+    public DbSet<FileBlock> FileBlocks { get; set; }
+
+    public DbSet<ChunkUpload> ChunkUploads { get; set; }
+
     public MediaServiceDbContext(DbContextOptions options) : base(options)
     {
     }

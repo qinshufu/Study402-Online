@@ -4,6 +4,9 @@ using Study402Online.Common.Configurations;
 using System.Reflection;
 using Autofac;
 using Study402Online.MediaService.Api.Infrastructure;
+using Aliyun.OSS;
+using Microsoft.Extensions.Options;
+using Study402Online.MediaService.Api.Application.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +27,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatR(options => options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+/// 添加 Oss 服务
+builder.Services.AddScoped(ctx =>
+{
+    var options = ctx.GetRequiredService<IOptions<OssOptions>>().Value;
+    return new OssClient(options.Endpoint, options.AccessKey, options.AccessKeySecret);
+});
+
+// 添加 Oss 选项
+builder.Services.AddOptions<OssOptions>().BindConfiguration("Oss");
 
 // 添加数据库
 builder.Services.AddEntityFrameworkSqlServer()
