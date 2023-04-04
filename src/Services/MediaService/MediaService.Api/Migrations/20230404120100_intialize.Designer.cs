@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Study402Online.MediaService.Api.Infrastructure;
 
@@ -11,9 +12,11 @@ using Study402Online.MediaService.Api.Infrastructure;
 namespace Study402Online.MediaService.Api.Migrations
 {
     [DbContext(typeof(MediaServiceDbContext))]
-    partial class MediaServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230404120100_intialize")]
+    partial class intialize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
