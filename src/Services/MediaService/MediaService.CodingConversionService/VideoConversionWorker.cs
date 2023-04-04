@@ -37,19 +37,24 @@ public class VideoConversionWorker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _semaphore.WaitOne();
-        var objectId = await _db.QuerySingleOrDefaultAsync<string>(@"select top 1 MediaFile from MediaProcess order by newid()");
-        ThreadPool.QueueUserWorkItem(async (_) =>
+        while (stoppingToken.IsCancellationRequested is false)
         {
-            try
+            _semaphore.WaitOne();
+
+            var objectId = await _db.QuerySingleOrDefaultAsync<string>(@"select top 1 MediaFile from MediaProcess order by newid()");
+
+            ThreadPool.QueueUserWorkItem(async (_) =>
             {
-                await ProcessVideoAsync(objectId).ConfigureAwait(false);
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
-        });
+                try
+                {
+                    await ProcessVideoAsync(objectId).ConfigureAwait(false);
+                }
+                finally
+                {
+                    _semaphore.Release();
+                }
+            });
+        }
     }
 
     private async Task ProcessVideoAsync(string objectId)
