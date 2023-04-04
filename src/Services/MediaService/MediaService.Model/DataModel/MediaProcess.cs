@@ -46,4 +46,9 @@ public class MediaProcess
     /// 失败信息
     /// </summary>
     public string FailureMessage { get; set; }
+
+    /// <summary>
+    /// 失败次数
+    /// </summary>
+    public int FailureCount { get; set; }
 }

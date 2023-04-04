@@ -8,22 +8,22 @@ public class MediaProcessHistory
     public int Id { get; set; }
 
     /// <summary>
-    /// 文件ID
+    /// 文件 ID
     /// </summary>
-    public string FileId { get; set; }
+    public int MediaFile { get; set; }
 
     /// <summary>
     /// 文件名称
     /// </summary>
-    public string FileName { get; set; }
+    public string MediaFileName { get; set; }
 
     /// <summary>
-    /// 存储桶
+    /// 文件桶
     /// </summary>
     public string StorageBucket { get; set; }
 
     /// <summary>
-    /// 状态
+    /// 存储状态
     /// </summary>
     public string Status { get; set; }
 
@@ -43,12 +43,12 @@ public class MediaProcessHistory
     public string AccessPath { get; set; }
 
     /// <summary>
-    /// 存储路径
-    /// </summary>
-    public string StoragePath { get; set; }
-
-    /// <summary>
     /// 失败信息
     /// </summary>
     public string FailureMessage { get; set; }
+
+    /// <summary>
+    /// 失败次数
+    /// </summary>
+    public int FailureCount { get; set; }
 }
