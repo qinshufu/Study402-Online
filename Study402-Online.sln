@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -30,6 +30,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{F348AB9F-2AAE-43B5-A5CE-AE87596FC2CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "src\Gateways\ApiGateway\ApiGateway.csproj", "{3B83331E-98E0-466F-8F03-8D7F7E5B472C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaService.CodingConversionService", "src\Services\MediaService\MediaService.CodingConversionService\MediaService.CodingConversionService.csproj", "{DBD8514F-BC8D-4444-B6C4-C90A63391212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{3B83331E-98E0-466F-8F03-8D7F7E5B472C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B83331E-98E0-466F-8F03-8D7F7E5B472C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B83331E-98E0-466F-8F03-8D7F7E5B472C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD8514F-BC8D-4444-B6C4-C90A63391212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD8514F-BC8D-4444-B6C4-C90A63391212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD8514F-BC8D-4444-B6C4-C90A63391212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD8514F-BC8D-4444-B6C4-C90A63391212}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{1F3C9C9A-5FEC-4A87-8440-65DB36BB3640} = {3FBC6C16-3A54-4FD0-B577-BA511871E468}
 		{F348AB9F-2AAE-43B5-A5CE-AE87596FC2CF} = {BDB438C5-2FF1-48A8-8116-3D02B30A433F}
 		{3B83331E-98E0-466F-8F03-8D7F7E5B472C} = {F348AB9F-2AAE-43B5-A5CE-AE87596FC2CF}
+		{DBD8514F-BC8D-4444-B6C4-C90A63391212} = {3FBC6C16-3A54-4FD0-B577-BA511871E468}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C837E83-DF8B-49A4-A109-792566F06E60}
