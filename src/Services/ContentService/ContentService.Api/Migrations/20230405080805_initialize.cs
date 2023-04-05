@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Study402Online.ContentService.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class intialize : Migration
+    public partial class initialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,7 +54,8 @@ namespace Study402Online.ContentService.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyId = table.Column<int>(type: "int", nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Users = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tags = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Creater = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -92,7 +93,8 @@ namespace Study402Online.ContentService.Api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyId = table.Column<int>(type: "int", nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Users = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tags = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Class = table.Column<string>(type: "nvarchar(max)", nullable: false),

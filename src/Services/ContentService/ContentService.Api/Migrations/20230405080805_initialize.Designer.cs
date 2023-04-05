@@ -12,8 +12,8 @@ using Study402Online.ContentService.Api.Infrastructure;
 namespace Study402Online.ContentService.Api.Migrations
 {
     [DbContext(typeof(ContentDbContext))]
-    [Migration("20230402102200_add-course-teacher-table")]
-    partial class addcourseteachertable
+    [Migration("20230405080805_initialize")]
+    partial class initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -184,6 +184,13 @@ namespace Study402Online.ContentService.Api.Migrations
                     b.Property<int>("CourseGrade")
                         .HasColumnType("int");
 
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Creater")
                         .HasColumnType("nvarchar(max)");
 
@@ -192,10 +199,6 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Market")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -288,6 +291,13 @@ namespace Study402Online.ContentService.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
@@ -299,10 +309,6 @@ namespace Study402Online.ContentService.Api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Market")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -18,9 +18,14 @@ namespace Study402Online.ContentService.Model.DataModel
         public string CompanyName { get; set; }
 
         /// <summary>
+        /// 课程 ID
+        /// </summary>
+        public int CourseId { get; set; }
+
+        /// <summary>
         /// 课程名称
         /// </summary>
-        public string Name { get; set; }
+        public string CourseName { get; set; }
 
         /// <summary>
         /// 适用用户
