@@ -1,0 +1,3 @@
+@using System.Text.Json
+
+<prv>@JsonSerializer.Serialize(Model)</prv>

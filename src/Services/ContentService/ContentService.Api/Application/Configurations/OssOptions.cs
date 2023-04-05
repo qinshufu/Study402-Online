@@ -1,8 +1,5 @@
-namespace Study402Online.MediaService.Api.Application.Configurations;
+namespace Study402Online.ContentService.Api.Application.Configurations;
 
-/// <summary>
-/// OSS 选项
-/// </summary>
 public record OssOptions
 {
     /// <summary>

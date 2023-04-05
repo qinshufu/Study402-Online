@@ -7,8 +7,38 @@ using Autofac;
 using Winton.Extensions.Configuration.Consul;
 using Microsoft.Extensions.Options;
 using Study402Online.Common.BackgroundServices;
+using RazorLight;
+using Aliyun.OSS;
+using Study402Online.ContentService.Api.Application.Configurations;
+using Autofac.Core;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
+
+/// 添加 Redis 
+builder.Services.AddSingleton(ctx => ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("rides")!));
+
+// 添加模板引擎
+builder.Services.AddSingleton(ctx =>
+{
+    var engine = new RazorLightEngineBuilder()
+    .UseFileSystemProject("Application/Templates")
+    .UseMemoryCachingProvider()
+    .Build();
+
+    return engine;
+});
+
+/// 添加 Oss 服务
+builder.Services.AddScoped(ctx =>
+{
+    var options = ctx.GetRequiredService<IOptions<OssOptions>>().Value;
+    return new OssClient(options.Endpoint, options.AccessKey, options.AccessKeySecret);
+});
+
+// 添加 Oss 选项
+builder.Services.AddOptions<OssOptions>().BindConfiguration("Oss");
+
 
 /// 添加 AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));

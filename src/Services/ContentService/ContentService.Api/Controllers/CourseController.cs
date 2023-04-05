@@ -87,5 +87,17 @@ namespace Study402Online.ContentService.Api.Controllers
             var command = new DeleteCourseCommand(course);
             return _mediator.Send(command);
         }
+
+        /// <summary>
+        /// 发布课程
+        /// </summary>
+        /// <param name="course"></param>
+        /// <returns></returns>
+        [HttpPost("publish/{course:int}")]
+        public Task<UnitResult> PublishCourse([FromRoute(Name = "course")] int course)
+        {
+            var command = new PublishCourseCommand(course);
+            return _mediator.Send(command);
+        }
     }
 }
