@@ -60,10 +60,22 @@ namespace Study402Online.ContentService.Api.Controllers
         /// </summary>
         /// <param name="teachPlan"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("del")]
         public Task<Result<int>> DeleteTeachPlan([FromQuery] int teachPlan)
         {
             var command = new DeleteTeachPlanCommand(teachPlan);
+            return _mediator.Send(command);
+        }
+
+        /// <summary>
+        /// 绑定课程计划到媒体
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("bind")]
+        public Task<UnitResult> BindMedia([FromBody] BindMediaModel model)
+        {
+            var command = new BindMediaCommand(model.MediaFile, model.TeachPlan, model.MediaName);
             return _mediator.Send(command);
         }
     }

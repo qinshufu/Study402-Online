@@ -1,7 +1,7 @@
 namespace Study402Online.ContentService.Model.DataModel
 {
     /// <summary>
-    /// 课程计划媒体文件
+    /// 课程计划与媒资关系
     /// </summary>
     public class TeachPlanMedia
     {
