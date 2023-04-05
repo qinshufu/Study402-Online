@@ -18,45 +18,53 @@
 .
 ├── sql
 └── src
-    ├── ContentService
-    │   ├── ContentService.Api
-    │   │   ├── Application
-    │   │   │   ├── MapperProfiles
-    │   │   │   ├── RequestHandlers
-    │   │   │   └── Requests
-    │   │   ├── Controllers
-    │   │   ├── Infrastructure
-    │   │   ├── Migrations
-    │   │   └── Properties
-    │   └── ContentService.Model
-    │       ├── DataModel
-    │       └── ViewModel
-    ├── DictionaryService
-    │   ├── DictionaryService.Api
-    │   │   ├── Application
-    │   │   │   ├── RequestHandlers
-    │   │   │   └── Requests
-    │   │   ├── Controllers
-    │   │   ├── Instructure
-    │   │   ├── Migrations
-    │   │   └── Properties
-    │   └── DictionaryService.Model
-    │       └── DataModel
-    └── StudyOnline.Common
+    ├── Gateways
+    │   └── ApiGateway
+    │       └── Properties
+    ├── Services
+    │   ├── ContentService # 内容管理服务
+    │   │   ├── ContentService.Api 
+    │   │   │   ├── Application
+    │   │   │   │   ├── Commands # 命令
+    │   │   │   │   ├── MapperProfiles
+    │   │   │   │   └── Queries # 查询
+    │   │   │   ├── Controllers
+    │   │   │   ├── Infrastructure # 基础设施
+    │   │   │   ├── Migrations # 迁移文件
+    │   │   │   └── Properties
+    │   │   └── ContentService.Model
+    │   │       ├── DataModel # 数据模型
+    │   │       └── ViewModel # 视图模型
+    │   ├── DictionaryService # 词典服务
+    │   │   ├── DictionaryService.Api
+    │   │   │   ├── Application
+    │   │   │   │   └── Queries
+    │   │   │   ├── Controllers
+    │   │   │   ├── Instructure
+    │   │   │   ├── Migrations
+    │   │   │   └── Properties
+    │   │   └── DictionaryService.Model
+    │   │       └── DataModel
+    │   └── MediaService # 媒体服务
+    │       ├── MediaService.Api
+    │       │   ├── Application
+    │       │   │   ├── Commands
+    │       │   │   └── Configurations
+    │       │   ├── Controllers
+    │       │   ├── Infrastructure
+    │       │   ├── Migrations
+    │       │   └── Properties
+    │       ├── MediaService.CodingConversionService
+    │       └── MediaService.Model
+    │           └── DataModel
+    └── StudyOnline.Common # 公共类库
+        ├── BackgroundServices
         ├── Configurations
         ├── Expression
         ├── Helpers
         ├── Linq
-        └── ViewModel
+        └── Model
 ```
-
-- sql 目录下为填充虚假内容的 sql
-- ContentService DictionaryService 分别为对应微服务的目录
-- StudyOneline.Common 项目为公用的类库
-- RequestHandlers 保存对应请求的处理器 Requests 目录保存对应请求
-- Infrastucture 保存基础设施
-- ContentService.Model DictionaryService.Model 保存试图模型以及数据库模型
-- ....
 
 ## 需要注意的问题
 
@@ -101,3 +109,14 @@ VS2022 + .NET7 + windows11 + Docker Desktop
 
 - [ ] 设置 CreateTime 字段为数据库提供默认值，Creater Updater 等字段没有设置...
 - [ ] 为模型字段配置合适的数据库类型，例如存储大文本的字段使用 text 类型
+- [ ] 将业务逻辑填充完整
+- [ ] 编写前端
+- [ ] 配置网关
+- [ ] 编写 docker file，配置 docker
+- [ ] 配置 ci/cd
+- [ ] 使用 HangFire 替换自定义的视频转码控制台项目
+- [ ] 测试
+- [ ] 使用 MassTrasit 或者 NServiceBus 做消息总线
+
+总的来说，将其变成一个真实的企业级项目，但是这个工作量看起来太大了，我实在是做不到....
+
