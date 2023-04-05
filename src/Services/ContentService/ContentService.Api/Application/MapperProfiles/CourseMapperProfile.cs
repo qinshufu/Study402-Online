@@ -15,5 +15,6 @@ public class CourseMapperProfile : Profile
         CreateMap<AddCourseModel, CourseMarket>();
         CreateMap<AddCourseModel, CourseInformationModel>();
         CreateMap<AddTeachPlanModel, TeachPlan>();
+        CreateMap<CoursePublishPre, CoursePublish>().AfterMap((src, dist) => dist.Id = 0);
     }
 }
