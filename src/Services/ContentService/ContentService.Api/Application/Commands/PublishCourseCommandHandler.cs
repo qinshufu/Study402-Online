@@ -60,7 +60,7 @@ public class PublishCourseCommandHandler : IRequestHandler<PublishCourseCommand,
         // TODO 生成预览页面并存储到OSS
         var previewPage = await _razorEngine.CompileRenderStringAsync("Course", "Course.rz", course);
         using var previewPageStream = new MemoryStream(Encoding.UTF8.GetBytes(previewPage));
-        var previewPageHash = SHA256.HashDataAsync(previewPageStream);
+        var previewPageHash = await SHA256.HashDataAsync(previewPageStream);
         var previewPageObjectId = $"page/{previewPageHash[0..2]}/{previewPageHash[2..4]}/{previewPageHash}";
 
         _ = _oss.PutObject(_options.Value.FileBucket, previewPageObjectId, previewPageStream);
