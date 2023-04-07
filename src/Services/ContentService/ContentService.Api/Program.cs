@@ -12,8 +12,23 @@ using Aliyun.OSS;
 using Study402Online.ContentService.Api.Application.Configurations;
 using Autofac.Core;
 using StackExchange.Redis;
+using Study402Online.ContentService.Api.Application.Services;
+using Polly;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+// 添加媒体服务配置
+builder.Services.AddOptions<MediaServiceOptions>().BindConfiguration("MediaService");
+
+// 添加 HttpClient (用于请求 MedaiService 服务)
+builder.Services.AddHttpClient(MediaService.HttpClientName, (ctx, client) =>
+    {
+        client.BaseAddress = ctx.GetRequiredService<IOptions<MediaServiceOptions>>().Value.Uri;
+    })
+    .AddTransientHttpErrorPolicy(policy => policy.WaitAndRetryAsync(3, retryNumber => TimeSpan.FromSeconds(Random.Shared.NextSingle()) * retryNumber))
+    .AddTransientHttpErrorPolicy(policy => policy.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
 
 /// 添加 Redis 
 builder.Services.AddSingleton(ctx => ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("rides")!));
