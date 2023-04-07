@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Study402Online.Common.Model;
 using Study402Online.MediaService.Model.DataModel;
 
@@ -15,12 +16,4 @@ public interface IMediaService
     /// <param name="file"></param>
     /// <returns></returns>
     Task<Result<MediaFile>> UploadFileAsync(string fileHash, Stream file);
-
-    /// <summary>
-    /// 上传文件并保存到指定路径
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="file"></param>
-    /// <returns></returns>
-    Task<Result<MediaFile>> UploadAndSaveFileAsync(string path, Stream file);
 }

@@ -27,32 +27,6 @@ public class MediaService : IMediaService
     }
 
     /// <summary>
-    /// 上传文件并保存到指定路径
-    /// </summary>
-    /// <param name="path"></param>
-    /// <param name="file"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    public async Task<Result<MediaFile>> UploadAndSaveFileAsync(string path, Stream file)
-    {
-        var form = new MultipartFormDataContent();
-
-        form.Add(new StringContent(path), nameof(path));
-        form.Add(new StreamContent(file), nameof(file));
-
-        var response = await _client.PostAsync("/api/media/upload", form);
-
-        var circuitBreak = _policyRegistry.Get<IAsyncPolicy>(_client.BaseAddress!.ToString()) as AsyncCircuitBreakerPolicy;
-        if (circuitBreak!.CircuitState == CircuitState.Open)
-        {
-            Console.WriteLine("上传文件失败，可能是媒体服务出错");
-        }
-
-        return await response.Content.ReadFromJsonAsync<Result<MediaFile>>();
-
-    }
-
-    /// <summary>
     /// 上传文件
     /// </summary>
     /// <param name="fileHash"></param>
