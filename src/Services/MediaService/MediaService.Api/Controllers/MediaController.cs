@@ -15,19 +15,25 @@ public class MediaController : ControllerBase
     public MediaController(IMediator mediator) => _mediator = mediator;
 
     /// <summary>
-    /// ÉÏ´«ÎÄ¼ş
+    /// ä¸Šä¼ æ–‡ä»¶
     /// </summary>
     /// <param name="file"></param>
     /// <returns></returns>
     [HttpPost("upload")]
-    public Task<Result<MediaFile>> UploadFile([FromForm] string fileHash, [FromForm] IFormFile file)
+    public Task<Result<MediaFile>> UploadFile([FromForm] string? fileHash, [FromForm] string? path, [FromForm] IFormFile file)
     {
-        var command = new UploadFileCommand() { File = file, FileHash = fileHash };
+        var command = (fileHash, path) switch
+        {
+            (null, null) => throw new ArgumentNullException("è‡³å°‘æä¾› fileHash å’Œ path å‚æ•°ä¸­çš„ä¸€ä¸ª"),
+            (null, _) => new UploadFileCommand { File = file, FileHash = fileHash },
+            (_, null) => new UploadAndSaveFileCommand { File = file, SavePath = path },
+        };
+
         return _mediator.Send(command);
     }
 
     /// <summary>
-    /// ²âÊÔÎÄ¼ş¿éÊÇ·ñ´æÔÚ
+    /// æµ‹è¯•æ–‡ä»¶å—æ˜¯å¦å­˜åœ¨
     /// </summary>
     /// <param name="blockHash"></param>
     /// <returns></returns>
@@ -39,7 +45,7 @@ public class MediaController : ControllerBase
     }
 
     /// <summary>
-    /// ÉÏ´«ÎÄ¼ş¿é
+    /// ä¸Šä¼ æ–‡ä»¶å—
     /// </summary>
     /// <param name="fileHash"></param>
     /// <param name="order"></param>
@@ -53,7 +59,7 @@ public class MediaController : ControllerBase
     }
 
     /// <summary>
-    /// ºÏ²¢ÎÄ¼ş¿é
+    /// åˆå¹¶æ–‡ä»¶å—
     /// </summary>
     /// <param name="fileHash"></param>
     /// <returns></returns>
