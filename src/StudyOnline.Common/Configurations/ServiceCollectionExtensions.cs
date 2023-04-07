@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using Study402Online.Common.BackgroundServices;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Study402Online.Common.Configurations
 {
@@ -16,7 +17,13 @@ namespace Study402Online.Common.Configurations
             var xmlname = Assembly.GetEntryAssembly().GetName().Name + ".xml";
             var path = Path.Combine(AppContext.BaseDirectory, xmlname);
 
-            services.AddSwaggerGen(opts => opts.IncludeXmlComments(path, true));
+            services.AddSwaggerGen(opts =>
+            {
+                opts.IncludeXmlComments(path, true);
+                opts.CustomOperationIds(options => options.ActionDescriptor.Id);
+                opts.CustomOperationIds(opts => Regex.Match(opts.ActionDescriptor.DisplayName!, @"(\w+\.)+(?<method>\w+)").Groups["method"].Value);
+                opts.OperationFilter<JsonContentTypeOperationFilter>();
+            });
             services.AddSwaggerGen(setupAction);
 
             return services;
