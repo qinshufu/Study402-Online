@@ -22,11 +22,11 @@ public class MediaController : ControllerBase
     [HttpPost("upload")]
     public Task<Result<MediaFile>> UploadFile([FromForm] string? fileHash, [FromForm] string? path, [FromForm] IFormFile file)
     {
-        var command = (fileHash, path) switch
+        IRequest<Result<MediaFile>> command = (fileHash, path) switch
         {
-            (null, null) => throw new ArgumentNullException("至少提供 fileHash 和 path 参数中的一个"),
-            (null, _) => new UploadFileCommand { File = file, FileHash = fileHash },
-            (_, null) => new UploadAndSaveFileCommand { File = file, SavePath = path },
+            (string f, null) when f is not null => new UploadAndSaveFileCommand { File = file, SavePath = f },
+            (null, string h) when h is not null => new UploadFileCommand { File = file, FileHash = h },
+            _ => throw new ArgumentNullException(nameof(fileHash), "至少提供 fileHash 和 path 参数中的一个"),
         };
 
         return _mediator.Send(command);
