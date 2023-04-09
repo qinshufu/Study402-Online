@@ -93,22 +93,7 @@ builder.Services.AddSwaggerGenDefault();
 
 var app = builder.Build();
 
-app.AddConsul(consul =>
-{
-    var options = app.Services.GetRequiredService<IOptions<ConsulOptions>>().Value;
-
-    consul.Agent.ServiceRegister(new Consul.AgentServiceRegistration
-    {
-        ID = options.ServiceId,
-        Name = options.ServiceName,
-        Address = options.ServiceAddress,
-        Port = options.ServicePort,
-        Check = new Consul.AgentServiceCheck
-        {
-            TTL = TimeSpan.FromSeconds(options.TTL)
-        }
-    });
-});
+app.UseDefaultConsul();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
