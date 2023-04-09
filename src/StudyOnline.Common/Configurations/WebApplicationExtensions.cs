@@ -15,7 +15,7 @@ public static class WebApplicationExtensions
     /// </summary>
     /// <param name="application"></param>
     /// <returns></returns>
-    public static WebApplication UseConsul(this WebApplication application, Action<ConsulClient> action)
+    public static WebApplication AddConsul(this WebApplication application, Action<ConsulClient> action)
     {
         var client = application.Services.GetRequiredService<ConsulClient>();
         action(client);
@@ -30,7 +30,7 @@ public static class WebApplicationExtensions
     /// <returns></returns>
     public static WebApplication UseDefaultConsul(this WebApplication application)
         =>
-        application.UseConsul(consul =>
+        application.AddConsul(consul =>
         {
             var options = application.Services.GetRequiredService<IOptions<ConsulOptions>>().Value;
 

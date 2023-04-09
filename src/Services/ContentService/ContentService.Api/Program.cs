@@ -93,7 +93,7 @@ builder.Services.AddSwaggerGenDefault();
 
 var app = builder.Build();
 
-app.UseConsul(consul =>
+app.AddConsul(consul =>
 {
     var options = app.Services.GetRequiredService<IOptions<ConsulOptions>>().Value;
 
