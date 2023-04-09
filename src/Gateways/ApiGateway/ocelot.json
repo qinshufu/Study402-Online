@@ -1,0 +1,62 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/media-service/{url}",
+      "ServiceName": "MediaService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/dictionary-service/{url}",
+      "ServiceName": "DictionaryService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/search-service/{url}",
+      "ServiceName": "SearchService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/user-service/{url}",
+      "ServiceName": "UserService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/content-service/{url}",
+      "ServiceName": "ContentService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "PollingInterval": 5000,
+      "ConfigurationKey": "API_Gateway"
+    }
+  }
+}
