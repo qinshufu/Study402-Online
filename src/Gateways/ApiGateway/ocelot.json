@@ -41,14 +41,15 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamPathTemplate": "/{url}",
       "DownstreamScheme": "http",
       "UseServiceDiscovery": true,
       "UpstreamPathTemplate": "/content-service/{url}",
       "ServiceName": "ContentService",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
-      }
+      },
+      "RouteIsCaseSensitive": false
     }
   ],
   "GlobalConfiguration": {
@@ -56,6 +57,7 @@
       "Host": "localhost",
       "Port": 8500,
       "PollingInterval": 5000,
+      "Type": "Consul",
       "ConfigurationKey": "API_Gateway"
     }
   }
