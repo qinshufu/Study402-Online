@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Study402Online.Common.Configurations;
 using UserService.Api.Configurations;
 using UserService.Api.Instructure;
+using Winton.Extensions.Configuration.Consul;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,11 @@ builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
 });
+
+// 添加 consul 服务
+builder.Services.AddConsul();
+builder.Services.AddOptions<ConsulOptions>().BindConfiguration("Consul");
+builder.Configuration.AddConsul("Study402Online/UserService/appsettings.json");
 
 var connectionString = builder.Configuration.GetConnectionString("default");
 builder.Services.AddDbContext<UserDbContext>(options =>
@@ -57,6 +64,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseDefaultConsul();
 
 app.UseHttpsRedirection();
 

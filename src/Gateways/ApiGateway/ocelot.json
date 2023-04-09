@@ -5,7 +5,7 @@
       "DownstreamScheme": "http",
       "UseServiceDiscovery": true,
       "UpstreamPathTemplate": "/media-service/{url}",
-      "ServiceName": "MediaService",
+      "ServiceName": "media-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       }
@@ -15,7 +15,7 @@
       "DownstreamScheme": "http",
       "UseServiceDiscovery": true,
       "UpstreamPathTemplate": "/dictionary-service/{url}",
-      "ServiceName": "DictionaryService",
+      "ServiceName": "dictionary-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       }
@@ -25,7 +25,7 @@
       "DownstreamScheme": "http",
       "UseServiceDiscovery": true,
       "UpstreamPathTemplate": "/search-service/{url}",
-      "ServiceName": "SearchService",
+      "ServiceName": "search-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       }
@@ -35,7 +35,7 @@
       "DownstreamScheme": "http",
       "UseServiceDiscovery": true,
       "UpstreamPathTemplate": "/user-service/{url}",
-      "ServiceName": "UserService",
+      "ServiceName": "user-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       }
@@ -45,7 +45,7 @@
       "DownstreamScheme": "http",
       "UseServiceDiscovery": true,
       "UpstreamPathTemplate": "/content-service/{url}",
-      "ServiceName": "ContentService",
+      "ServiceName": "content-service",
       "LoadBalancerOptions": {
         "Type": "RoundRobin"
       },
