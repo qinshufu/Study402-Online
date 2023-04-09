@@ -22,7 +22,7 @@ namespace Study402Online.Common.Configurations
                 opts.IncludeXmlComments(path, true);
                 opts.CustomOperationIds(options => options.ActionDescriptor.Id);
                 opts.CustomOperationIds(opts => Regex.Match(opts.ActionDescriptor.DisplayName!, @"(\w+\.)+(?<method>\w+)").Groups["method"].Value);
-                opts.OperationFilter<JsonContentTypeOperationFilter>();
+                //opts.OperationFilter<JsonContentTypeOperationFilter>();
             });
             services.AddSwaggerGen(setupAction);
 
