@@ -15,9 +15,22 @@ using StackExchange.Redis;
 using Study402Online.ContentService.Api.Application.Services;
 using Polly;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text.Unicode;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+    {
+        options.TokenValidationParameters.ValidAudience = "api-client";
+        options.TokenValidationParameters.ValidIssuer = "identity";
+        options.TokenValidationParameters.RequireExpirationTime = true;
+        options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my-secret-123456789"));
+    });
 
 // 添加媒体服务配置
 builder.Services.AddOptions<MediaServiceOptions>().BindConfiguration("MediaService");
@@ -103,6 +116,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -8,8 +8,12 @@ using Aliyun.OSS;
 using Microsoft.Extensions.Options;
 using Study402Online.MediaService.Api.Application.Configurations;
 using Winton.Extensions.Configuration.Consul;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => builder.Configuration.Bind("JWT", options));
 
 /// 添加 AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
@@ -69,6 +73,8 @@ if (app.Environment.IsDevelopment())
 app.UseDefaultConsul();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
