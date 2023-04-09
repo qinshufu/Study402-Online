@@ -18,9 +18,11 @@ public class ConsulTTLBackgroundService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        var interval = Math.Max((_options.TTL - 1), 1);
+
         while (stoppingToken.IsCancellationRequested is false)
         {
-            await Task.Delay(TimeSpan.FromSeconds(_options.TTL));
+            await Task.Delay(TimeSpan.FromSeconds(interval));
 
             // 不需要结果
             _ = _client.Agent.PassTTL("service:" + _options.ServiceId, "心跳检查", stoppingToken);
