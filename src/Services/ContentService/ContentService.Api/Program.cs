@@ -19,8 +19,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Unicode;
 using System.Text;
+using Study402Online.BuildingBlocks.LocalMessage;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// 使用本地消息表
+builder.Services.AddLocalMessage();
+builder.Services.AddLocalMessageHandlers(typeof(Program).Assembly);
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

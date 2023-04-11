@@ -43,6 +43,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\BuildingBlocks\LocalMessage\LocalMessage.csproj" />
         <ProjectReference Include="..\..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
         <ProjectReference Include="..\..\MediaService\MediaService.Model\MediaService.Model.csproj" />
         <ProjectReference Include="..\ContentService.Model\ContentService.Model.csproj" />
