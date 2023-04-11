@@ -5,7 +5,7 @@ namespace Study402Online.BuildingBlocks.LocalMessage;
 
 public static class ServiceCollectionExtensions
 {
-    public static ServiceCollection AddLocalMessage(this ServiceCollection services)
+    public static IServiceCollection AddLocalMessage(this IServiceCollection services)
     {
         services.AddSingleton<IMessageScheduler, MessageScheduler>();
         services.AddOptions<LocalMessageOption>("LocalMessage");
@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static ServiceCollection AddLocalMessageHandlers(this ServiceCollection services, params Assembly[] assemblies)
+    public static IServiceCollection AddLocalMessageHandlers(this IServiceCollection services, params Assembly[] assemblies)
     {
         var handlers = assemblies.Select(a => a.ExportedTypes).SelectMany(types => types).Where(type => type.IsSubclassOf(typeof(IMessageHandler<>)));
 
