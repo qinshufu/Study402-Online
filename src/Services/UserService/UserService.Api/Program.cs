@@ -1,3 +1,5 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +7,7 @@ using Study402Online.Common.Configurations;
 using UserService.Api.Configurations;
 using UserService.Api.Instructure;
 using Winton.Extensions.Configuration.Consul;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +24,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOptions<JwtOptions>().BindConfiguration("Token");
 
 // 添加 MediatR
-builder.Services.AddMediatR(config =>
-{
-    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
-});
+builder.Services.AddMediatR(config => { config.RegisterServicesFromAssembly(typeof(Program).Assembly); });
 
 // 添加 consul 服务
 builder.Services.AddConsul();
@@ -33,10 +33,26 @@ builder.Configuration.AddConsul("Study402Online/UserService/appsettings.json");
 
 var connectionString = builder.Configuration.GetConnectionString("default");
 builder.Services.AddDbContext<UserDbContext>(options =>
-    options.UseSqlServer(connectionString, options => options.MigrationsAssembly(typeof(Program).Assembly.GetName().Name)));
+    options.UseSqlServer(connectionString,
+        options => options.MigrationsAssembly(typeof(Program).Assembly.GetName().Name)));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<UserDbContext>();
+
+// 添加 Autofac 配置
+builder.Host.UseServiceProviderFactory(
+    new AutofacServiceProviderFactory(autofacBuilder =>
+    {
+        autofacBuilder.RegisterAssemblyTypes(typeof(Program).Assembly).AsImplementedInterfaces()
+            .InstancePerLifetimeScope();
+    }));
+
+// 添加微信配置
+builder.Services.AddOptions<WechatOptions>().BindConfiguration("Wechat");
+
+// 添加 Redis
+builder.Services.AddScoped<ConnectionMultiplexer>(ctx =>
+    ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("redis")!));
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -55,7 +71,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
     // User settings.
     options.User.AllowedUserNameCharacters =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     options.User.RequireUniqueEmail = false;
 });
 
