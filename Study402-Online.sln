@@ -65,8 +65,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceClient", "ServiceClient", "{D79299D4-BF2D-40B1-8800-28EB0D80C819}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderService", "OrderService", "{DEA609DF-1AE0-4045-B11A-E7CBD7585A15}"
+	ProjectSection(SolutionItems) = preProject
+		src\Services\OrderService\README.md = src\Services\OrderService\README.md
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Api", "src\Services\OrderService\OrderService.Api\OrderService.Api.csproj", "{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Api", "src\Services\OrderService\OrderService.Api\OrderService.Api.csproj", "{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Model", "src\Services\OrderService\OrderService.Model\OrderService.Model.csproj", "{3AEE3666-99A7-4191-98BC-A9D2D86F87E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -142,6 +147,10 @@ Global
 		{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEE3666-99A7-4191-98BC-A9D2D86F87E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEE3666-99A7-4191-98BC-A9D2D86F87E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEE3666-99A7-4191-98BC-A9D2D86F87E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEE3666-99A7-4191-98BC-A9D2D86F87E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -177,6 +186,7 @@ Global
 		{D79299D4-BF2D-40B1-8800-28EB0D80C819} = {7636D599-60C2-469F-86AF-D1741A7E4FB3}
 		{DEA609DF-1AE0-4045-B11A-E7CBD7585A15} = {8D41E338-C052-4FFB-90E8-85003A5DA20C}
 		{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE} = {DEA609DF-1AE0-4045-B11A-E7CBD7585A15}
+		{3AEE3666-99A7-4191-98BC-A9D2D86F87E2} = {DEA609DF-1AE0-4045-B11A-E7CBD7585A15}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C837E83-DF8B-49A4-A109-792566F06E60}
