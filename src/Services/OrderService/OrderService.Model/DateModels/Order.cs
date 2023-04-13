@@ -91,10 +91,10 @@ public enum OrderStatus
     /// <summary>
     /// 支付完成
     /// </summary>
-    Paid,
+    PaymentSuccessful,
 
     /// <summary>
     /// 支付失败
     /// </summary>
-    PaymentFailure
+    PaymentFailed
 }
