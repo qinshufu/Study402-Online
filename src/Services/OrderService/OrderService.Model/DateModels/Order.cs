@@ -42,7 +42,7 @@ public class Order
     /// <summary>
     /// 订单描述
     /// </summary>
-    public string OrderDescript { get; set; }
+    public string OrderDescription { get; set; }
 
     /// <summary>
     /// 订单详情
