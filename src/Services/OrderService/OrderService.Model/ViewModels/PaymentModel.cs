@@ -6,12 +6,12 @@ namespace Study402Online.OrderService.Model.ViewModels;
 public class PaymentModel
 {
     /// <summary>
-    /// 阿里支付链接
+    /// 支付链接
     /// </summary>
-    public Uri AliPayUri { get; set; }
+    public Uri PayUri { get; set; }
 
     /// <summary>
-    /// 阿里支付二维码
+    /// 支付二维码
     /// </summary>
-    public string AliPayQrCode { get; set; }
+    public string PayQrCode { get; set; }
 }

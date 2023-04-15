@@ -10,7 +10,7 @@ public class OrderPayRecord
     /// <summary>
     /// 交易单号
     /// </summary>
-    public int PayNo { get; set; }
+    public long PayNo { get; set; }
 
     /// <summary>
     /// 第三方交易号
