@@ -77,6 +77,6 @@ public class CourseToScheduleAddHandler : IRequestHandler<CourseToScheduleAddCom
 
         await _dbContext.SaveChangesAsync();
 
-        return ResultFactory.Success<UnitResult>("选课成功");
+        return ResultFactory.Success();
     }
 }
