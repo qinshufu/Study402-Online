@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BDB438C5-2FF1-48A8-8116-3D02B30A433F}"
+	ProjectSection(SolutionItems) = preProject
+		src\.editorconfig = src\.editorconfig
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyOnline.Common", "src\StudyOnline.Common\StudyOnline.Common.csproj", "{76CB5AEC-F23B-4E67-B4CF-1091E2B07EBE}"
 EndProject
