@@ -14,4 +14,9 @@ public class PaymentModel
     /// 支付二维码
     /// </summary>
     public string PayQrCode { get; set; }
+
+    /// <summary>
+    /// 支付流水号
+    /// </summary>
+    public long PayNo { get; set; }
 }

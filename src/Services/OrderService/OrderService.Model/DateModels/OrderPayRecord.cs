@@ -43,7 +43,35 @@ public class OrderPayRecord
     public string Currency { get; set; }
 
     /// <summary>
+    /// 支付状态
+    /// </summary>
+    public PayStatus Status { get; set; }
+
+    /// <summary>
     /// 创建时间
     /// </summary>
     public DateTime CreateTime { get; set; }
+}
+
+public enum PayStatus
+{
+    /// <summary>
+    /// 等待支付
+    /// </summary>
+    WaitingForPayment,
+
+    /// <summary>
+    /// 支付中
+    /// </summary>
+    DuringPayment,
+
+    /// <summary>
+    /// 支付成功
+    /// </summary>
+    PaymentSuccessful,
+
+    /// <summary>
+    /// 支付失败
+    /// </summary>
+    PaymentFailure
 }

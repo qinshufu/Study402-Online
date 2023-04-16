@@ -89,6 +89,11 @@ public enum OrderStatus
     WaitingForPayment,
 
     /// <summary>
+    /// 支付中
+    /// </summary>
+    DuringPayment,
+
+    /// <summary>
     /// 支付完成
     /// </summary>
     PaymentSuccessful,

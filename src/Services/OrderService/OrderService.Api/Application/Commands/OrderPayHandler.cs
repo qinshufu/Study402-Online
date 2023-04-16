@@ -115,6 +115,7 @@ public class OrderPayHandler : IRequestHandler<OrderPayCommand, Result<PaymentMo
 
         return ResultFactory.Success(new PaymentModel()
         {
+            PayNo = payRecord.PayNo,
             PayUri = new Uri(payUri),
             PayQrCode = qrcodeBase64
         });
