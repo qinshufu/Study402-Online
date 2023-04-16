@@ -62,8 +62,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StudyService", "StudyServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyService.Api", "src\Services\StudyService\StudyService.Api\StudyService.Api.csproj", "{42F86596-E584-4160-881A-0C9E83FE8AB9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceClient", "ServiceClient", "{D79299D4-BF2D-40B1-8800-28EB0D80C819}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderService", "OrderService", "{DEA609DF-1AE0-4045-B11A-E7CBD7585A15}"
 	ProjectSection(SolutionItems) = preProject
 		src\Services\OrderService\README.md = src\Services\OrderService\README.md
@@ -71,7 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderService", "OrderServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Api", "src\Services\OrderService\OrderService.Api\OrderService.Api.csproj", "{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Model", "src\Services\OrderService\OrderService.Model\OrderService.Model.csproj", "{3AEE3666-99A7-4191-98BC-A9D2D86F87E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Model", "src\Services\OrderService\OrderService.Model\OrderService.Model.csproj", "{3AEE3666-99A7-4191-98BC-A9D2D86F87E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,7 +181,6 @@ Global
 		{0F745295-FC6E-4B6A-B81B-6B5F6C3BD5E7} = {A6035CFF-2BF9-4A74-907C-52B3136C8966}
 		{6CC91503-205B-4CC0-BB3C-308A52D89B7B} = {8D41E338-C052-4FFB-90E8-85003A5DA20C}
 		{42F86596-E584-4160-881A-0C9E83FE8AB9} = {6CC91503-205B-4CC0-BB3C-308A52D89B7B}
-		{D79299D4-BF2D-40B1-8800-28EB0D80C819} = {7636D599-60C2-469F-86AF-D1741A7E4FB3}
 		{DEA609DF-1AE0-4045-B11A-E7CBD7585A15} = {8D41E338-C052-4FFB-90E8-85003A5DA20C}
 		{6708E4EE-705D-49CA-A6E3-1E7F974A4EAE} = {DEA609DF-1AE0-4045-B11A-E7CBD7585A15}
 		{3AEE3666-99A7-4191-98BC-A9D2D86F87E2} = {DEA609DF-1AE0-4045-B11A-E7CBD7585A15}
