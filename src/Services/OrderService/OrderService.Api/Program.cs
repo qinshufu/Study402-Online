@@ -41,7 +41,8 @@ builder.Services.AddHttpContextAccessor();
 
 // 设置 refit
 builder.Services
-    .AddHttpClient<IWechatPayApiClient>(client => client.BaseAddress = new Uri("https://api.mch.weixin.qq.com"))
+    .AddRefitClient<IWechatPayApiClient>()
+    .ConfigureHttpClient(wechatPayOptions => wechatPayOptions.BaseAddress = new Uri("https://api.mch.weixin.qq.com"))
     .AddHttpMessageHandler<WechatPayRequestSigntureHandler>();
 
 // autofac
