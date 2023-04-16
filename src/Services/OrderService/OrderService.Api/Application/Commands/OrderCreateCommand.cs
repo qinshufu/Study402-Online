@@ -13,7 +13,7 @@ public record OrderCreateCommand : IRequest<Result<int>>
     /// <summary>
     /// 下单客户 IP
     /// </summary>
-    public string ClientId { get; set; }
+    public string ClientIp { get; set; }
 
     /// <summary>
     /// 总价格
