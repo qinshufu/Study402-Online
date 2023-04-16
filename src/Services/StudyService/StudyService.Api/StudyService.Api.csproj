@@ -11,13 +11,14 @@
     <ItemGroup>
         <PackageReference Include="MediatR" Version="12.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
-        <PackageReference Include="Refit" Version="6.3.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="6.5.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
       <ProjectReference Include="..\..\ContentService\ContentService.Model\ContentService.Model.csproj" />
+      <ProjectReference Include="..\..\OrderService\OrderService.Api\OrderService.Api.csproj" />
     </ItemGroup>
 
 </Project>
