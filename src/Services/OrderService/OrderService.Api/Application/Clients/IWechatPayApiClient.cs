@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using System.Text.Json;
+using Refit;
 
 namespace Study402Online.OrderService.Api.Application.Clients;
 
@@ -13,4 +14,13 @@ public interface IWechatPayApiClient
     /// <returns>预支付交易会话标识</returns>
     [Post("/v3/pay/transactions/jsapi")]
     Task<string> CreateOrderAsync(object order);
+
+    /// <summary>
+    /// 查询交易状态（或者说支付状态）
+    /// </summary>
+    /// <param name="payNo">支付流水号</param>
+    /// <param name="merchatId">商户 ID</param>
+    /// <returns></returns>
+    [Get("/v3/pay/transactions/out-trade-no/{transactionId:string}")]
+    Task<JsonElement> QueryOrderStatusAsync(string payNo, string merchatId);
 }
