@@ -9,6 +9,16 @@ namespace Study402Online.ContentService.Model.ViewModel
         /// 主键
         /// </summary>
         public int Id { get; set; }
+        
+        /// <summary>
+        /// 机构ID
+        /// </summary>
+        public int CompanyId { get; set; }
+
+        /// <summary>
+        /// 机构名称
+        /// </summary>
+        public string? CompanyName { get; set; }
 
         /// <summary>
         /// 课程名称
