@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Study402Online.Common.Model;
 using Study402Online.OrderService.Api.Application.Commands;
+using Study402Online.OrderService.Model.DateModels;
 using Study402Online.OrderService.Model.ViewModels;
 
 namespace Study402Online.OrderService.Api.Controllers;
@@ -39,4 +40,13 @@ public class OrderController : ControllerBase
     public Task<PaymentNotificationResponse> ReceiveWechatPaymentResult(
         [FromBody] NameValueCollection nameValueCollection) =>
         _mediator.Send(new PaymentResultReceiveCommand(nameValueCollection, PayVendor.WeChatPay));
+
+    /// <summary>
+    /// 获取支付结果
+    /// </summary>
+    /// <param name="command"></param>
+    /// <returns></returns>
+    [HttpGet("payment_result")]
+    public Task<Result<OrderPayRecord>> QueryPaymentResult([FromQuery] PaymentResultQueryCommand command) =>
+        _mediator.Send(command);
 }
