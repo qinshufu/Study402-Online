@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UserService.Api.Instructure;
+using Study402Online.UserService.Api.Instructure;
 
 #nullable disable
 
-namespace UserService.Api.Migrations
+namespace Study402Online.UserService.Api.Migrations
 {
     [DbContext(typeof(UserDbContext))]
     [Migration("20230409075904_initalize")]

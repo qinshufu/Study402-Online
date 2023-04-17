@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc.TagHelpers.Cache;
 using Study402Online.Common.Model;
-using UserService.Api.Services;
+using Study402Online.UserService.Api.Services;
 
-namespace UserService.Api.Application.Commands;
+namespace Study402Online.UserService.Api.Application.Commands;
 
 /// <summary>
 /// 微信登陆标识申请命令处理器

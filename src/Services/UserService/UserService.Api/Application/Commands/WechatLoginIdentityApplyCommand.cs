@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Study402Online.Common.Model;
 
-namespace UserService.Api.Application.Commands;
+namespace Study402Online.UserService.Api.Application.Commands;
 
 /// <summary>
 /// 申请标识用户登录请求的 id

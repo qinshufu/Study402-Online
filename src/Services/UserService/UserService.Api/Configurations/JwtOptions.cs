@@ -1,4 +1,4 @@
-namespace UserService.Api.Configurations;
+namespace Study402Online.UserService.Api.Configurations;
 
 /// <summary>
 /// JWT 配置

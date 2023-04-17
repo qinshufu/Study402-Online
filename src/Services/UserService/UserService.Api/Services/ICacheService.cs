@@ -1,4 +1,4 @@
-namespace UserService.Api.Services;
+namespace Study402Online.UserService.Api.Services;
 
 /// <summary>
 /// 缓存服务

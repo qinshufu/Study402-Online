@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Study402Online.Common.Configurations;
-using UserService.Api.Configurations;
-using UserService.Api.Instructure;
+using Study402Online.UserService.Api.Configurations;
+using Study402Online.UserService.Api.Instructure;
 using Winton.Extensions.Configuration.Consul;
 using StackExchange.Redis;
 

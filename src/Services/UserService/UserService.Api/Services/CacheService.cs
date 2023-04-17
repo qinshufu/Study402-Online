@@ -1,7 +1,7 @@
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace UserService.Api.Services;
+namespace Study402Online.UserService.Api.Services;
 
 /// <summary>
 /// 缓存服务的默认实现，使用 Redis

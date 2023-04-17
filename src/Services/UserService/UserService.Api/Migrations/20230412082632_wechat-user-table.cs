@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace UserService.Api.Migrations
+namespace Study402Online.UserService.Api.Migrations
 {
     /// <inheritdoc />
     public partial class wechatusertable : Migration

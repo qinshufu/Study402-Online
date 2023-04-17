@@ -1,4 +1,4 @@
-﻿namespace UserService.Api.Configurations
+﻿namespace Study402Online.UserService.Api.Configurations
 {
     /// <summary>
     /// 微信登录选项

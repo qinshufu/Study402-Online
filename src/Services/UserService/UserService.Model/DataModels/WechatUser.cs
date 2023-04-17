@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace UserService.Api.Models.DataModels;
+namespace Study402Online.UserService.Model.DataModels;
 
 /// <summary>
 /// 网站用户

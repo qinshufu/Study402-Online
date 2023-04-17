@@ -1,4 +1,4 @@
-﻿namespace UserService.Api.Models.ViewModels
+namespace Study402Online.UserService.Model.ViewModels
 {
     /// <summary>
     /// 创建新用户后的返回

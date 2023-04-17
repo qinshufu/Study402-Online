@@ -1,9 +1,9 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Study402Online.Common.Model;
-using UserService.Api.Models.ViewModels;
+using Study402Online.UserService.Model.ViewModels;
 
-namespace UserService.Api.Application.Commands;
+namespace Study402Online.UserService.Api.Application.Commands;
 
 /// <summary>
 /// 接受微信登录授权命令

@@ -2,12 +2,13 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Study402Online.Common.Model;
-using UserService.Api.Configurations;
-using UserService.Api.Instructure;
-using UserService.Api.Models.ViewModels;
-using UserService.Api.Services;
+using Study402Online.UserService.Api.Configurations;
+using Study402Online.UserService.Api.Instructure;
+using Study402Online.UserService.Model.ViewModels;
+using Study402Online.UserService.Api.Services;
+using Study402Online.UserService.Model.DataModels;
 
-namespace UserService.Api.Application.Commands;
+namespace Study402Online.UserService.Api.Application.Commands;
 
 /// <summary>
 /// 接受微信登录授权处理器，当用户成功授权以后，创建新的账户并将该账户与其微信账户关联起来

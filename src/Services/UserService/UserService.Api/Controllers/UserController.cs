@@ -1,10 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Study402Online.Common.Model;
-using UserService.Api.Application.Commands;
-using UserService.Api.Models.ViewModels;
+using Study402Online.UserService.Api.Application.Commands;
+using Study402Online.UserService.Model.ViewModels;
 
-namespace UserService.Api.Controllers;
+namespace Study402Online.UserService.Api.Controllers;
 
 [ApiController]
 [Route("/api/user")]

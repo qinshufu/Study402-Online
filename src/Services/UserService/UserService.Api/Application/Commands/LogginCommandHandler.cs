@@ -6,9 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using Study402Online.Common.Model;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using UserService.Api.Configurations;
+using Study402Online.UserService.Api.Configurations;
 
-namespace UserService.Api.Application.Commands;
+namespace Study402Online.UserService.Api.Application.Commands;
 
 /// <summary>
 /// 登录命令处理器
