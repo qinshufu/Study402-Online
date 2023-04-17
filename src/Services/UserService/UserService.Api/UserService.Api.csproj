@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
+    <ProjectReference Include="..\UserService.Model\UserService.Model.csproj" />
   </ItemGroup>
 
 </Project>

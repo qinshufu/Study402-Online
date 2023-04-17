@@ -1,10 +1,9 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Study402Online.Common.Model;
 using UserService.Api.Configurations;
 using UserService.Api.Instructure;
-using UserService.Api.Models.DataModels;
 using UserService.Api.Models.ViewModels;
 using UserService.Api.Services;
 
