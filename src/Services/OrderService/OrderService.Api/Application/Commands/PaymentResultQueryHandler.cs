@@ -1,6 +1,8 @@
-﻿using MediatR;
+using MassTransit;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using OrderService.Domain.Events;
 using Study402Online.Common.Model;
 using Study402Online.OrderService.Api.Application.Clients;
 using Study402Online.OrderService.Api.Instructure;
@@ -18,13 +20,16 @@ public class PaymentResultQueryHandler : IRequestHandler<PaymentResultQueryComma
     private readonly IOptions<WechatPayOptions> _options;
 
     private readonly IWechatPayApiClient _payApiClient;
+    private readonly IBus _bus;
 
-    public PaymentResultQueryHandler(OrderServiceDbContext dbContext, IOptions<WechatPayOptions> options,
-        IWechatPayApiClient payApiClient)
+    public PaymentResultQueryHandler(
+        OrderServiceDbContext dbContext, IOptions<WechatPayOptions> options,
+        IWechatPayApiClient payApiClient, IBus bus)
     {
         _dbContext = dbContext;
         _options = options;
         _payApiClient = payApiClient;
+        _bus = bus;
     }
 
     public async Task<Result<OrderPayRecord>> Handle(
@@ -81,6 +86,9 @@ public class PaymentResultQueryHandler : IRequestHandler<PaymentResultQueryComma
             payRecord.Status = paySuccess ? PayStatus.PaymentSuccessful : PayStatus.PaymentFailure;
             order.Status = paySuccess ? OrderStatus.PaymentSuccessful : OrderStatus.PaymentFailed;
             order.FinishTime = DateTime.Now;
+
+            // FIXME: 这里可能会存在的问题，当事务提交失败，然而这里的消息已经发送了，状态就不一致了
+            await _bus.Publish(new CoursePaymentCompletedEvent { IsPaymentSuccessful = paySuccess, CourseSelectionId = order.ExternalBusinessId });
         }
 
         _dbContext.Add(payRecord);

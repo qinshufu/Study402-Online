@@ -18,10 +18,12 @@
         <PackageReference Include="QRCoder" Version="1.4.3" />
         <PackageReference Include="Refit.HttpClientFactory" Version="6.5.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.14" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
+      <ProjectReference Include="..\OrderService.Domain\OrderService.Domain.csproj" />
       <ProjectReference Include="..\OrderService.Model\OrderService.Model.csproj" />
     </ItemGroup>
 

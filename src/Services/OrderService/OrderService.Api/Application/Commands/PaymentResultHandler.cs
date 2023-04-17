@@ -1,8 +1,10 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.Json;
+using MassTransit;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using OrderService.Domain.Events;
 using Study402Online.OrderService.Api.Application.Services;
 using Study402Online.OrderService.Api.Instructure;
 using Study402Online.OrderService.Model.DateModels;
@@ -23,24 +25,27 @@ public class PaymentResultHandler : IRequestHandler<PaymentResultReceiveCommand,
 
     private readonly ISignatureService _signatureService;
 
+    private readonly IBus _bus;
+
     public PaymentResultHandler(
         OrderServiceDbContext dbContext, HttpContextAccessor httpContextAccessor,
-        IOptions<WechatPayOptions> wechatOptions, ISignatureService signatureService)
+        IOptions<WechatPayOptions> wechatOptions, ISignatureService signatureService, IBus bus)
     {
         _dbContext = dbContext;
         _httpContextAccessor = httpContextAccessor;
         _wechatOptions = wechatOptions;
         _signatureService = signatureService;
+        _bus = bus;
     }
 
     public async Task<PaymentNotificationResponse> Handle(
         PaymentResultReceiveCommand request,
         CancellationToken cancellationToken) => request.PayVendor switch
-    {
-        PayVendor.AliPay => await HanleAliPaymentResultAsync(request, cancellationToken),
-        PayVendor.WeChatPay => await HandleWechatPaymentResultAsync(request, cancellationToken),
-        _ => new PaymentNotificationResponse("FAILED", "失败")
-    };
+        {
+            PayVendor.AliPay => await HanleAliPaymentResultAsync(request, cancellationToken),
+            PayVendor.WeChatPay => await HandleWechatPaymentResultAsync(request, cancellationToken),
+            _ => new PaymentNotificationResponse("FAILED", "失败")
+        };
 
     private async Task<PaymentNotificationResponse> HandleWechatPaymentResultAsync(PaymentResultReceiveCommand request,
         CancellationToken cancellationToken)
@@ -56,7 +61,7 @@ public class PaymentResultHandler : IRequestHandler<PaymentResultReceiveCommand,
         var jsonData = JsonDocument.Parse(textData).RootElement;
 
         var payNo = jsonData.GetProperty("out_trade_no").GetString();
-        var payStatus = jsonData.GetProperty("trade_state	").GetString();
+        var payStatus = jsonData.GetProperty("trade_state").GetString();
 
         // 忽略中间状态，当支付到达完成状态以后删掉支付记录，也可以达到幂等性
         return payStatus switch
@@ -125,6 +130,9 @@ public class PaymentResultHandler : IRequestHandler<PaymentResultReceiveCommand,
 
         _dbContext.Update(order);
         await _dbContext.SaveChangesAsync();
+
+        // FIXME 这里存在的问题，当事务提交时出错，而此时消息已经发送了，也就是说整体的事务一致性不能保证了
+        await _bus.Publish(new CoursePaymentCompletedEvent { CourseSelectionId = order.ExternalBusinessId, IsPaymentSuccessful = order.Status is OrderStatus.PaymentSuccessful });
 
         return new PaymentNotificationResponse(PaymentNotificationResponse.SuccessCode, "succ");
     }
