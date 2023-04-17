@@ -7,6 +7,7 @@ using Study402Online.Common.Model;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Study402Online.UserService.Api.Configurations;
+using Study402Online.UserService.Model.ViewModels;
 
 namespace Study402Online.UserService.Api.Application.Commands;
 
@@ -42,6 +43,8 @@ public class LogginCommandHandler : IRequestHandler<LoginCommand, Result<string>
         if (result.Succeeded is false)
             return ResultFactory.Fail<string>("登录失败");
 
+        var user = await _userManager.Users.SingleAsync(u => u.UserName == request.UserName);
+
         var tokenHandler = new JwtSecurityTokenHandler();
         var tokenDescriptor = new SecurityTokenDescriptor()
         {
@@ -51,7 +54,9 @@ public class LogginCommandHandler : IRequestHandler<LoginCommand, Result<string>
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Value.Credentials)), SecurityAlgorithms.HmacSha256Signature),
             Claims = new Dictionary<string, object>
             {
-                ["user"] = request.UserName,
+                [nameof(UserInfo.Id)] = user.Id,
+                [nameof(UserInfo.Name)] = user.UserName!,
+                [nameof(UserInfo.NickName)] = user.NormalizedUserName!,
             }
         };
 
