@@ -14,61 +14,17 @@
 还有一个比较严重的问题就是没有测试...所以只能看看代码，但是正确运行确实不一定的😀
 
 ### 项目结构
-```
-.
-├── sql
-└── src
-    ├── Gateways
-    │   └── ApiGateway
-    │       └── Properties
-    ├── Services
-    │   ├── ContentService # 内容管理服务
-    │   │   ├── ContentService.Api 
-    │   │   │   ├── Application
-    │   │   │   │   ├── Commands # 命令
-    │   │   │   │   ├── MapperProfiles
-    │   │   │   │   └── Queries # 查询
-    │   │   │   ├── Controllers
-    │   │   │   ├── Infrastructure # 基础设施
-    │   │   │   ├── Migrations # 迁移文件
-    │   │   │   └── Properties
-    │   │   └── ContentService.Model
-    │   │       ├── DataModel # 数据模型
-    │   │       └── ViewModel # 视图模型
-    │   ├── DictionaryService # 词典服务
-    │   │   ├── DictionaryService.Api
-    │   │   │   ├── Application
-    │   │   │   │   └── Queries
-    │   │   │   ├── Controllers
-    │   │   │   ├── Instructure
-    │   │   │   ├── Migrations
-    │   │   │   └── Properties
-    │   │   └── DictionaryService.Model
-    │   │       └── DataModel
-    │   └── MediaService # 媒体服务
-    │       ├── MediaService.Api
-    │       │   ├── Application
-    │       │   │   ├── Commands
-    │       │   │   └── Configurations
-    │       │   ├── Controllers
-    │       │   ├── Infrastructure
-    │       │   ├── Migrations
-    │       │   └── Properties
-    │       ├── MediaService.CodingConversionService
-    │       └── MediaService.Model
-    │           └── DataModel
-    └── StudyOnline.Common # 公共类库
-        ├── BackgroundServices
-        ├── Configurations
-        ├── Expression
-        ├── Helpers
-        ├── Linq
-        └── Model
-```
+BuildingBlocks 为公用的构建块
 
-## 需要注意的问题
+Gateways 保存网关
 
-### 请求输入的验证
+Service 下为微服务项目
+
+## 一些解释
+
+### 数据验证验证
+
+#### 输入验证
 
 首先，该项目的 Web API 没有对输入的请求进行验证，这是一个很严重的问题，在实际的公司项目中不要学习这里不做验证而必须应该进行验证。
 
@@ -79,13 +35,19 @@
 
 关于这两类验证应该放在那里是一个值得讨论的问题，它们是应该放在一起还是应该拆分在不同的位置呢？个人看法是这两类验证应该拆分。
 
-### 业务逻辑的验证
+#### 业务逻辑的验证
 
 是的，关于业务逻辑也没有怎么做验证（那要写很多代码，我一个人写不完同时也是一件无聊的事情）
 
-### 数据库的约束
+### 数据库配置
+
+#### 数据库的约束
 
 是的，需要创建数据库表的约束，我也没有做，直接默认（因为这是一件无聊的事情）
+
+#### 数据库的部分字段
+
+其中有些字段设置起来，我直接使用的默认值，在业务逻辑中实际上是需要根据上下问来获取的
 
 ### 关于错误的状态码
 
@@ -99,11 +61,31 @@
 
 这个也没有做，例如文件存储直接使用的 Aliyun SDK 的 OssClient 类，实际上最好用 IStorage 接口包装
 
-简而言之，该项目仅仅是作为 项目架构以及编码格式的一个展示
+简而言之，该项目仅仅是作为 项目架构的 .NET 微服务实验以及编码格式的一个展示
+
+## 关于消息可靠性的解决
+
+个人直接使用的 MassTransit 这个消息总线，但是我好像并没有找到这个消息总线关于消息可靠性是如何解决的。
+
+如果使用 RabbitMQ 的话，个人会使用服务端确认以及消息持久化来保证消息投递的可靠性，但是这个需要自己手动编写，
+然而我期待能够有现成的解决方案，因为我知道个人造的轮子水平质量都堪忧。
+
+## 关于有些同样的问题，不同的解决方案
+
+譬如调用 HTTP API 接口的时候，有时候可以看到我使用的是 HttpClient 手动编码调用，还有的使用使用的是 Refit（声明式 HTTP 客户端）
+的解决方案。有部分项目将 VO 和 POCO 放到了一个新的项目中，还有的项目将其放在 Api 项目中。
+
+这是因为我的想法不断在变化😀，一开始是直接 HttpClient 手动调用，但是后来我发现这样重复代码太多（因为一开始我以为不会写很多调用代码），
+后面我尝试了关于 Http 客户端的两种不同解决方案：
+
+1. AutoRest 代码生成方案
+2. Refit 之类的声明式 HTTP 客户端
+
+最后选择 Refit 的原因是，我配置了一下 AutoRest 发现生成的代码不太和我心意，查了一下资料还是不知道该怎么解决
 
 ## 开发环境
 
-VS2022 + .NET7 + windows11 + Docker Desktop
+VS2022/Rider + .NET7 + windows10 + Docker Desktop
 
 ## TODO
 
@@ -116,7 +98,7 @@ VS2022 + .NET7 + windows11 + Docker Desktop
 - [ ] 配置 ci/cd
 - [ ] 使用 HangFire 替换自定义的视频转码控制台项目
 - [ ] 测试
-- [ ] 使用 MassTrasit 或者 NServiceBus 做消息总线
+- [x] 使用 MassTrasit 或者 NServiceBus 做消息总线
 
-总的来说，将其变成一个真实的企业级项目，但是这个工作量看起来太大了，我实在是做不到....
+总的来说，将其变成一个真实的企业级项目，但是这个工作量看起来太大了，我不想做...
 
