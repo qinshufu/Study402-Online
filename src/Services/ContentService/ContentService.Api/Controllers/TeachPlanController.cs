@@ -37,7 +37,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="teachPlanId"></param>
         /// <returns></returns>
         [HttpGet("get")]
-        public Task<Result<TeachPlan>> GetTeachPlan([FromQuery] TeachPlanQuery command) => _mediator.Send(command);
+        public Task<Result<TeachPlanInfo>> GetTeachPlan([FromQuery] TeachPlanQuery command) => _mediator.Send(command);
 
         /// <summary>
         /// 添加课程计划
@@ -57,7 +57,7 @@ namespace Study402Online.ContentService.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        public Task<Result<TeachPlanInfo>> UpdateTeachPlan([FromBody] UpdateTeachPlanModel model)
+        public Task<Result<TeachPlan>> UpdateTeachPlan([FromBody] UpdateTeachPlanModel model)
         {
             var command = new UpdateTeachPlanCommand(model);
             return _mediator.Send(command);
