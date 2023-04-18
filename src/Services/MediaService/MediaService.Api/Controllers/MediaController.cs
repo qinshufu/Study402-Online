@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Study402Online.Common.Model;
 using Study402Online.MediaService.Api.Application.Commands;
+using Study402Online.MediaService.Api.Application.Queries;
 using Study402Online.MediaService.Model.DataModel;
 
 namespace Study402Online.MediaService.Api.Controllers;
@@ -31,6 +32,14 @@ public class MediaController : ControllerBase
 
         return _mediator.Send(command);
     }
+
+    /// <summary>
+    /// 获取媒体文件
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpGet("get")]
+    public Task<Result<MediaFile>> GetFile([FromQuery] MediaFileQuery query) => _mediator.Send(query);
 
     /// <summary>
     /// 测试文件块是否存在
