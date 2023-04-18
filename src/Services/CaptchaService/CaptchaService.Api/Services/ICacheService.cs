@@ -13,7 +13,7 @@ public interface ICacheService
     /// <param name="key">缓存 key</param>
     /// <param name="value">缓存对象</param>
     /// <returns></returns>
-    Task SetObjectAsync<TKey, TValue>(TKey key, TValue value);
+    Task SetObjectAsync<TKey, TValue>(TKey key, TValue value, TimeSpan? expireTime = default);
 
     /// <summary>
     /// 获取缓存的对象

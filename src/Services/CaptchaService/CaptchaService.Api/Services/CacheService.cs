@@ -21,8 +21,8 @@ public class CacheService : ICacheService
         return JsonSerializer.Deserialize<TValue>(@string!)!;
     }
 
-    public async Task SetObjectAsync<TKey, TValue>(TKey key, TValue value)
+    public async Task SetObjectAsync<TKey, TValue>(TKey key, TValue value, TimeSpan? expireTime)
     {
-        await _redis.GetDatabase().StringSetAsync(key!.ToString(), JsonSerializer.Serialize(value));
+        await _redis.GetDatabase().StringSetAsync(key!.ToString(), JsonSerializer.Serialize(value), expireTime);
     }
 }

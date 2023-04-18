@@ -29,7 +29,7 @@ public class PictureCaptchaGenerateHandler : IRequestHandler<PictureCaptchaGener
         var code = _codeHelper.GetRandomEnDigitalText(6);
         var picture = _codeHelper.GetEnDigitalCodeByte(code);
 
-        await _cacheService.SetObjectAsync("captcha:" + codeKey, code);
+        await _cacheService.SetObjectAsync("captcha:" + codeKey, code, TimeSpan.FromMinutes(10));
 
         return ResultFactory.Success(new PictureCaptcha
         {
