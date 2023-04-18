@@ -19,7 +19,9 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\StudyOnline.Common\StudyOnline.Common.csproj" />
       <ProjectReference Include="..\..\ContentService\ContentService.Model\ContentService.Model.csproj" />
+      <ProjectReference Include="..\..\MediaService\MediaService.Model\MediaService.Model.csproj" />
       <ProjectReference Include="..\..\OrderService\OrderService.Api\OrderService.Api.csproj" />
+      <ProjectReference Include="..\..\UserService\UserService.Model\UserService.Model.csproj" />
     </ItemGroup>
 
 </Project>
